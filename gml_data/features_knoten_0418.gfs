@@ -1,0 +1,30 @@
+<GMLFeatureClassList>
+  <GMLFeatureClass>
+    <Name>features_knoten_0418</Name>
+    <ElementPath>features_knoten_0418</ElementPath>
+    <GeometryName>geometryProperty</GeometryName>
+    <GeometryElementPath>geometryProperty</GeometryElementPath>
+    <!--LINESTRING-->
+    <GeometryType>2</GeometryType>
+    <SRSName>urn:ogc:def:crs:EPSG::25832</SRSName>
+    <DatasetSpecificInfo>
+      <FeatureCount>530</FeatureCount>
+      <ExtentXMin>567697.23900</ExtentXMin>
+      <ExtentXMax>567790.29230</ExtentXMax>
+      <ExtentYMin>5935871.16350</ExtentYMin>
+      <ExtentYMax>5935942.74870</ExtentYMax>
+    </DatasetSpecificInfo>
+    <PropertyDefn>
+      <Name>lowerCorner</Name>
+      <ElementPath>boundedBy|Envelope|lowerCorner</ElementPath>
+      <Type>String</Type>
+      <Width>24</Width>
+    </PropertyDefn>
+    <PropertyDefn>
+      <Name>upperCorner</Name>
+      <ElementPath>boundedBy|Envelope|upperCorner</ElementPath>
+      <Type>String</Type>
+      <Width>24</Width>
+    </PropertyDefn>
+  </GMLFeatureClass>
+</GMLFeatureClassList>
