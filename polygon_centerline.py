@@ -3,6 +3,7 @@ from shapely.affinity import rotate
 import numpy as np
 from scipy.signal import savgol_filter
 import matplotlib.pyplot as plt
+from pyproj import Transformer
 
 def polygon_centerline(poly: Polygon, dx=10.0, smooth_window=21, smooth_order=1, show_plots=True):
     # ==== SCHRITT 1: Polygon rotieren ====
@@ -135,10 +136,11 @@ def polygon_centerline(poly: Polygon, dx=10.0, smooth_window=21, smooth_order=1,
 
     # Querschnittslinien direkt orthogonal zur geglätteten finalen Mittellinie
     ortho_cutlines = []
-    num_samples = 30
+    num_samples = 10
     line_length = center_final.length
     samples = np.linspace(0, line_length, num_samples)
 
+    #Alle Punkte außer den letzen und den ersten
     for s in samples[1:-1]:  # nicht die allerersten/letzten Punkte verwenden
         pt = center_final.interpolate(s)
         delta = 1e-3 * line_length
@@ -160,8 +162,24 @@ def polygon_centerline(poly: Polygon, dx=10.0, smooth_window=21, smooth_order=1,
         
         ortho_cutlines.append(LineString([p1, p2]))
 
+        # Ersten und letzten Punkt separat behandeln
+        for s in [0.0, line_length]:
+            pt = center_final.interpolate(s)
+            if s == 0.0:
+                pt_next = center_final.interpolate(s + 1e-3 * line_length)
+                tangent = np.array([pt_next.x - pt.x, pt_next.y - pt.y])
+            else:
+                pt_prev = center_final.interpolate(s - 1e-3 * line_length)
+                tangent = np.array([pt.x - pt_prev.x, pt.y - pt_prev.y])
 
+            if np.linalg.norm(tangent) == 0:
+                continue
+            tangent = tangent / np.linalg.norm(tangent)
+            ortho = np.array([-tangent[1], tangent[0]])
 
+            p1 = (pt.x - ortho[0] * avg_width / 2, pt.y - ortho[1] * avg_width / 2)
+            p2 = (pt.x + ortho[0] * avg_width / 2, pt.y + ortho[1] * avg_width / 2)
+            ortho_cutlines.append(LineString([p1, p2]))
 
     if show_plots:
         plt.figure(figsize=(8, 6))
@@ -194,39 +212,37 @@ coords = [
 polygon = Polygon(coords)
 
 # Vectors-Liste erstellen
-vectors = []
-try:
-    print("➕ Berechne Mittellinie für Polygon")
-    centerline, avg_width, avg_xy = polygon_centerline(polygon, dx=10.0, smooth_window=21, smooth_order=1, show_plots=True)
-    
-    # Koordinaten der Mittellinie
-    x_line, y_line = centerline.xy
-    image_coordinates = list(zip(x_line, y_line))
-    
-    # Annahme: original_coordinates sind die Eingabekoordinaten
-    original_coordinates = coords
-    
-    # Annahme: geocoordinates sind placeholder
-    geocoordinates = original_coordinates
-    
-    # Füge Daten zur vectors-Liste hinzu
-    vectors.append({
-        "polygon_id": 0,
-        "image_coordinates": image_coordinates,
-        "original_coordinates": original_coordinates,
-        "geocoordinates": geocoordinates,
-        "average_width": avg_width,
-        "avg_xy": avg_xy
-    })
-    
-    print(f"Durchschnittliche Breite des Polygons: {avg_width:.2f}")
-    print(f"Durchschnittlicher Abstand AVG(x+y): {avg_xy:.2f}")
-    print("Mittellinienkoordinaten:")
-    for x, y in image_coordinates:
-        print(f"({x:.2f}, {y:.2f})")
-except Exception as e:
-    print(f"⚠️ Fehler bei Mittellinie: {e}")
 
-# Ausgabe der vectors-Liste
-print("\nVectors-Liste:")
-print(vectors)
+
+def print_centerline_geocoords(centerline: LineString, min_x: float, min_y: float, scale: float, num_points: int = 10):
+    """
+    Gibt gleichmäßig verteilte Punkte entlang einer Mittellinie in WGS84 aus.
+
+    :param centerline: Die Mittellinie als Shapely LineString (z. B. von polygon_centerline)
+    :param min_x: min_x aus render_gml_to_image
+    :param min_y: min_y aus render_gml_to_image
+    :param scale: Skalierung (ebenfalls aus render_gml_to_image)
+    :param num_points: Anzahl der Punkte (Standard: 10, inkl. Anfang & Ende)
+    """
+
+    if centerline.length == 0 or len(centerline.coords) < 2:
+        print("❌ Mittellinie ist leer oder zu kurz.")
+        return
+
+    # Punkte gleichmäßig entlang der Länge der Linie
+    distances = np.linspace(0, centerline.length, num_points)
+    sampled_points = [centerline.interpolate(d) for d in distances]
+
+    # Zurücktransformieren: Bild → Original → WGS84
+    transformer = Transformer.from_crs("EPSG:25832", "EPSG:4326", always_xy=True)
+
+    geo_points = []
+    for i, pt in enumerate(sampled_points):
+        x_img, y_img = pt.x, pt.y
+        x_orig = x_img / scale + min_x
+        y_orig = y_img / scale + min_y
+        lon, lat = transformer.transform(x_orig, y_orig)
+        geo_points.append((lon, lat))
+        print(f"🌍 Punkt {i+1}: ({lon:.6f}, {lat:.6f})")
+
+    return geo_points

@@ -111,7 +111,7 @@ def render_gml_to_image(gml_file, output_file):
         return None, None, None, None
 
 def apply_yolo_model(img_path, model_path="best.pt"):
-    """YOLO-Modell auf Bild anwenden, Masken speichern und Pixelmasken zurückgeben."""
+    """YOLO-Modell auf Bild anwenden, Masken zurückgeben (ohne Speichern)."""
     try:
         model = YOLO(model_path)
         results = model(img_path, task="segment")
@@ -126,9 +126,7 @@ def apply_yolo_model(img_path, model_path="best.pt"):
         for i, mask in enumerate(res.masks.data):
             mask_np = (mask.cpu().numpy() * 255).astype(np.uint8)
             mask_resized = cv2.resize(mask_np, (w_orig, h_orig), interpolation=cv2.INTER_NEAREST)
-            mask_path = os.path.join(output_dir_masks, f"mask_{i}_{os.path.basename(img_path)}")
-            Image.fromarray(mask_resized).save(mask_path)
-            print(f"✅ Maske gespeichert: {mask_path}")
+            # Kein Speichern mehr hier!
             masks.append(mask_resized)
         
         return masks, h_orig, w_orig
@@ -136,69 +134,45 @@ def apply_yolo_model(img_path, model_path="best.pt"):
     except Exception as e:
         print(f"❌ Fehler bei YOLO-Inferenz: {str(e)}")
         return None, None, None
-
+    
 def vectorize_masks(masks, img_path, iterations=2, tolerance=3.0):
-    """Pixelmasken in geschlossene, geglättete Polygone umwandeln und speichern."""
+    """Pixelmasken in Polygone umwandeln, keine Bilddateien speichern."""
     vectorized_data = []
     
     for i, mask in enumerate(masks):
-        # Konturen aus der Pixelmaske extrahieren
         mask_bin = (mask > 127).astype(np.uint8)
         contours, _ = cv2.findContours(mask_bin, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         if not contours:
             print(f"Keine Konturen in Maske {i} gefunden. Überspringe.")
             continue
         
-        # Alle Konturen zu Polygonen vereinen
         polygons = []
         for cnt in contours:
-            if len(cnt) >= 3:  # Mindestens 3 Punkte für ein Polygon
+            if len(cnt) >= 3:
                 points = cnt.squeeze()
-                if points.ndim == 1:  # Einzelpunkt verhindern
+                if points.ndim == 1:
                     continue
-                # Konturpunkte glätten mit Chaikins Algorithmus
                 rounded_coords = chaikin_smooth(points, iterations=iterations)
-                # Polygon erstellen
                 try:
                     polygon = Polygon(rounded_coords)
                     if not polygon.is_valid:
-                        print(f"Ungültiges Polygon in Maske {i}. Überspringe.")
                         continue
-                    # Glättung mit simplify
                     smoothed_polygon = polygon.simplify(tolerance, preserve_topology=True)
                     if not smoothed_polygon.is_valid:
-                        print(f"Ungültiges geglättetes Polygon in Maske {i}. Überspringe.")
                         continue
                     polygons.append(smoothed_polygon)
                 except Exception as e:
-                    print(f"Fehler bei der Verarbeitung von Kontur in Maske {i}: {str(e)}")
+                    print(f"Fehler bei Kontur in Maske {i}: {str(e)}")
                     continue
         
         if not polygons:
-            print(f"Keine gültigen Polygone in Maske {i}. Überspringe.")
             continue
         
-        # Polygone vereinen
         union_polygon = unary_union(polygons)
         if not union_polygon.is_valid:
-            print(f"Ungültiges vereintes Polygon in Maske {i}. Überspringe.")
             continue
         
-        # Polygon als Bild speichern
-        polygon_img = np.zeros((mask.shape[0], mask.shape[1]), dtype=np.uint8)
-        if union_polygon.geom_type == "Polygon":
-            x, y = union_polygon.exterior.xy
-            points = np.array(list(zip(x, y)), dtype=np.int32)
-            cv2.fillPoly(polygon_img, [points], color=255)
-        elif union_polygon.geom_type == "MultiPolygon":
-            for poly in union_polygon.geoms:
-                x, y = poly.exterior.xy
-                points = np.array(list(zip(x, y)), dtype=np.int32)
-                cv2.fillPoly(polygon_img, [points], color=255)
-        
-        polygon_path = os.path.join(output_dir_vectors, f"vectorized_polygon_{i}_{os.path.basename(img_path)}")
-        imsave(polygon_path, polygon_img)
-        print(f"✅ Vektorisiertes Polygon gespeichert: {polygon_path}")
+        # Kein Speichern von Polygon-Bildern mehr hier!
         
         vectorized_data.append(union_polygon)
     
@@ -279,59 +253,121 @@ def main():
     if not gml_files:
         print("❌ Keine GML-Dateien in gml_data gefunden.")
         return
-    
+
     for gml_file in gml_files:
         print(f"📂 Verarbeite GML-Datei: {gml_file}")
         gml_path = os.path.join(input_dir_gml, gml_file)
-        
+
         img_path = os.path.join(output_dir_images, gml_file.replace(".gml", ".png"))
         points, min_x, min_y, scale = render_gml_to_image(gml_path, img_path)
         if points is None:
             continue
-        
+
         masks, h_orig, w_orig = apply_yolo_model(img_path)
         if masks is None:
             continue
-        
-        vectorized_data = vectorize_masks(masks, img_path, iterations=10, tolerance=10.0)
+
+        # Direkt in Vektoren konvertieren – ohne Speichern
+        vectorized_data = []
+        for i, mask in enumerate(masks):
+            mask_bin = (mask > 127).astype(np.uint8)
+            contours, _ = cv2.findContours(mask_bin, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            polygons = []
+            for cnt in contours:
+                if len(cnt) >= 3:
+                    points = cnt.squeeze()
+                    if points.ndim == 1:
+                        continue
+                    smoothed = chaikin_smooth(points, iterations=10)
+                    polygon = Polygon(smoothed)
+                    if polygon.is_valid:
+                        polygon = polygon.simplify(10.0, preserve_topology=True)
+                        if polygon.is_valid:
+                            polygons.append(polygon)
+            if polygons:
+                union = unary_union(polygons)
+                if union.is_valid:
+                    vectorized_data.append(union)
+
         if not vectorized_data:
-            print("❌ Keine vektorisierten Polygone generiert.")
+            print("⚠️ Keine gültigen Vektordaten erzeugt.")
             continue
-        
-        output_path = os.path.join(output_dir_final, gml_file.replace(".gml", "_vectorized_overlay.png"))
-        vectors = plot_skeletons_on_image(img_path, vectorized_data, output_path, (min_x, min_y, scale))
-        
-                # ➕ Schritt: Mittellinien berechnen & als gemeinsames Overlay speichern
+
+        # Mittellinien berechnen & auf Bild zeichnen
         original = cv2.imread(img_path)
         if original is None:
-            print("⚠️ Konnte Bild für Mittellinien-Overlay nicht laden.")
+            print("⚠️ Konnte Bild nicht laden.")
             continue
         overlay = original.copy()
 
+        centerline_coords = []  # 🌍 Hier sammeln wir die GPS-Punkte für alle Mittellinien eines Bildes
         for i, polygon in enumerate(vectorized_data):
             if polygon.geom_type != "Polygon":
                 continue
             try:
                 print(f"➕ Berechne Mittellinie für Polygon {i}")
-                centerline = polygon_centerline(polygon, dx=10.0, smooth_window=21, smooth_order=2, show_plots=False)
+                centerline, avg_width, avg_xy = polygon_centerline(
+                    polygon, dx=5.0, smooth_window=11, smooth_order=1, show_plots=False
+                )
+                if not isinstance(centerline, LineString):
+                    continue
+                print(f"ℹ️ Breite: {avg_width:.2f} | Abstand AVG(x+y): {avg_xy:.2f}")
+                              # ➕ Koordinaten für spätere CSV-Speicherung sammeln
+                distances = np.linspace(0, centerline.length, 10)
+                sampled_points = [centerline.interpolate(d) for d in distances]
 
-                # Mittellinie auf das gemeinsame Overlay zeichnen
+                for k, pt in enumerate(sampled_points):
+                    x_img, y_img = pt.x, pt.y
+                    x_orig = x_img / scale + min_x
+                    y_orig = y_img / scale + min_y
+                    lon, lat = transformer.transform(x_orig, y_orig)
+                    centerline_coords.append({
+                        "polygon_id": i,
+                        "point_index": k,
+                        "geocoordinate": f"({lon:.6f}, {lat:.6f})"
+                    })
+
+
+
+                # Auf Bild zeichnen
                 x_line, y_line = centerline.xy
                 for j in range(len(x_line) - 1):
                     pt1 = (int(x_line[j]), int(y_line[j]))
                     pt2 = (int(x_line[j + 1]), int(y_line[j + 1]))
                     cv2.line(overlay, pt1, pt2, color=(0, 255, 0), thickness=2)
-
             except Exception as e:
-                print(f"⚠️ Fehler bei Mittellinie für Polygon {i}: {e}")
+                print(f"⚠️ Fehler bei Polygon {i}: {e}")
+                continue
 
-        # Gemeinsames Mittellinienbild speichern
         centerlines_path = os.path.join(output_dir_final, f"centerlines_{os.path.basename(img_path)}")
         cv2.imwrite(centerlines_path, overlay)
-        print(f"✅ Gemeinsames Mittellinienbild gespeichert: {centerlines_path}")
 
-    
-    print("🎉 Verarbeitung aller Dateien abgeschlossen!")
+        # ✅ GPS-Tabelle schreiben
+        # ✅ GPS-Tabelle schreiben (kombiniert long/lat in einer Spalte als Punkt)
+        centerline_csv_path = os.path.join(output_dir_final, f"centerlines_{os.path.basename(img_path).replace('.png', '.csv')}")
+        df_centerline = pd.DataFrame(centerline_coords)
+        df_centerline.to_csv(centerline_csv_path, index=False)
+        print(f"✅ GPS-Koordinaten der Mittellinien gespeichert: {centerline_csv_path}")
+
+
+        print(f"✅ Bild mit Mittellinien gespeichert: {centerlines_path}")
+
+    print("🎉 Alle GML-Dateien erfolgreich verarbeitet.")
+
+def print_centerline_geocoords(centerline: LineString, min_x: float, min_y: float, scale: float, num_points: int = 10):
+    if centerline.length == 0 or len(centerline.coords) < 2:
+        print("❌ Mittellinie ist leer oder zu kurz.")
+        return
+
+    distances = np.linspace(0, centerline.length, num_points)
+    sampled_points = [centerline.interpolate(d) for d in distances]
+    print("🧭 Geokoordinaten entlang der Mittellinie:")
+    for i, pt in enumerate(sampled_points):
+        x_img, y_img = pt.x, pt.y
+        x_orig = x_img / scale + min_x
+        y_orig = y_img / scale + min_y
+        lon, lat = transformer.transform(x_orig, y_orig)
+        print(f"  Punkt {i+1}: ({lat:.6f}, {lon:.6f})")
 
 if __name__ == "__main__":
     main()
