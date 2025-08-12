@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            elementFormDefault="unqualified" 
+            attributeFormDefault="unqualified" 
+            version="1.0">
+
+    <!-- Wurzelelement: MAPEM -->
+    <xsd:element name="MAPEM" type="MAPEMType">
+        <xsd:annotation>
+            <xsd:documentation>MAPEM (Map Data Message) describing intersection geometry and lane configurations.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <!-- MAPEMType -->
+    <xsd:complexType name="MAPEMType">
+        <xsd:sequence>
+            <xsd:element name="header" type="HeaderType"/>
+            <xsd:element name="map" type="MapType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- HeaderType -->
+    <xsd:complexType name="HeaderType">
+        <xsd:sequence>
+            <xsd:element name="protocolVersion" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Protocol version of the MAP message.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="messageID" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Message ID for the MAP message.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="stationID" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Unique ID of the station transmitting the MAP message.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- MapType -->
+    <xsd:complexType name="MapType">
+        <xsd:sequence>
+            <xsd:element name="msgIssueRevision" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Revision number of the map message.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="intersections" type="IntersectionsType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- IntersectionsType -->
+    <xsd:complexType name="IntersectionsType">
+        <xsd:sequence>
+            <xsd:element name="IntersectionGeometry" type="IntersectionGeometryType" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- IntersectionGeometryType -->
+    <xsd:complexType name="IntersectionGeometryType">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Name of the intersection (e.g., MAP_ITS_17_1729_2.1).</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="IntersectionIDType"/>
+            <xsd:element name="revision" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Revision number of the intersection geometry.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="refPoint" type="RefPointType"/>
+            <xsd:element name="laneWidth" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Lane width in centimeters.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="speedLimits" type="SpeedLimitsType"/>
+            <xsd:element name="laneSet" type="LaneSetType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- IntersectionIDType -->
+    <xsd:complexType name="IntersectionIDType">
+        <xsd:sequence>
+            <xsd:element name="region" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Region ID of the intersection.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Unique ID of the intersection.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- RefPointType -->
+    <xsd:complexType name="RefPointType">
+        <xsd:sequence>
+            <xsd:element name="lat" type="xsd:long">
+                <xsd:annotation>
+                    <xsd:documentation>Latitude of the reference point in 1/10 microdegrees.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="long" type="xsd:long">
+                <xsd:annotation>
+                    <xsd:documentation>Longitude of the reference point in 1/10 microdegrees.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- SpeedLimitsType -->
+    <xsd:complexType name="SpeedLimitsType">
+        <xsd:sequence>
+            <xsd:element name="RegulatorySpeedLimit" type="RegulatorySpeedLimitType" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- RegulatorySpeedLimitType -->
+    <xsd:complexType name="RegulatorySpeedLimitType">
+        <xsd:sequence>
+            <xsd:element name="type" type="SpeedLimitTypeType"/>
+            <xsd:element name="speed" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Speed limit in cm/s.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- SpeedLimitTypeType -->
+    <xsd:complexType name="SpeedLimitTypeType">
+        <xsd:sequence>
+            <xsd:element name="vehicleMaxSpeed" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Indicator for vehicle maximum speed limit.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- LaneSetType -->
+    <xsd:complexType name="LaneSetType">
+        <xsd:sequence>
+            <xsd:element name="GenericLane" type="GenericLaneType" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- GenericLaneType -->
+    <xsd:complexType name="GenericLaneType">
+        <xsd:sequence>
+            <xsd:element name="laneID" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Unique ID of the lane.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ingressApproach" type="xsd:integer" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Approach ID for ingress lanes.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="laneAttributes" type="LaneAttributesType"/>
+            <xsd:element name="nodeList" type="NodeListType"/>
+            <xsd:element name="ConnectsTo" type="ConnectsToType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- LaneAttributesType -->
+    <xsd:complexType name="LaneAttributesType">
+        <xsd:sequence>
+            <xsd:element name="directionalUse" type="BitStringType">
+                <xsd:annotation>
+                    <xsd:documentation>Bit string indicating lane directional use (e.g., '10' for ingress).</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="sharedWith" type="BitStringType">
+                <xsd:annotation>
+                    <xsd:documentation>Bit string indicating which vehicle types can use the lane.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="laneType" type="LaneTypeType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- LaneTypeType -->
+    <xsd:complexType name="LaneTypeType">
+        <xsd:sequence>
+            <xsd:element name="vehicle" type="BitStringType">
+                <xsd:annotation>
+                    <xsd:documentation>Bit string indicating vehicle lane type.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- BitStringType -->
+    <xsd:simpleType name="BitStringType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-1]+"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- NodeListType -->
+    <xsd:complexType name="NodeListType">
+        <xsd:sequence>
+            <xsd:element name="nodes" type="NodesType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- NodesType -->
+    <xsd:complexType name="NodesType">
+        <xsd:sequence>
+            <xsd:element name="NodeXY" type="NodeXYType" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- NodeXYType -->
+    <xsd:complexType name="NodeXYType">
+        <xsd:sequence>
+            <xsd:element name="delta" type="DeltaType"/>
+            <xsd:element name="attributes" type="NodeAttributesType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- DeltaType -->
+    <xsd:complexType name="DeltaType">
+        <xsd:choice>
+            <xsd:element name="node-XY5" type="NodeXYPointType"/>
+            <xsd:element name="node-XY6" type="NodeXYPointType"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <!-- NodeXYPointType -->
+    <xsd:complexType name="NodeXYPointType">
+        <xsd:sequence>
+            <xsd:element name="x" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>X-coordinate offset in centimeters.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="y" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Y-coordinate offset in centimeters.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- NodeAttributesType -->
+    <xsd:complexType name="NodeAttributesType">
+        <xsd:sequence>
+            <xsd:element name="dWidth" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Width deviation in centimeters.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- ConnectsToType -->
+    <xsd:complexType name="ConnectsToType">
+        <xsd:sequence>
+            <xsd:element name="ConnectingLane" type="ConnectingLaneType" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- ConnectingLaneType -->
+    <xsd:complexType name="ConnectingLaneType">
+        <xsd:sequence>
+            <xsd:element name="lane" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>ID of the connecting lane.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="maneuver" type="BitStringType">
+                <xsd:annotation>
+                    <xsd:documentation>Bit string indicating allowed maneuvers.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

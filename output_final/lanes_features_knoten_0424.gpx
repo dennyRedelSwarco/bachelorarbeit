@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gpx version="1.1" creator="Custom Script">
+  <metadata>
+    <time>2025-08-11T14:25:02.474837</time>
+  </metadata>
+  <trk>
+    <name>Lane_0</name>
+    <trkseg>
+      <trkpt lat="53.568108" lon="9.904912">
+        <name>Point_Lane_0_0</name>
+      </trkpt>
+      <trkpt lat="53.568161" lon="9.904798">
+        <name>Point_Lane_0_1</name>
+      </trkpt>
+      <trkpt lat="53.568210" lon="9.904679">
+        <name>Point_Lane_0_2</name>
+      </trkpt>
+      <trkpt lat="53.568256" lon="9.904556">
+        <name>Point_Lane_0_3</name>
+      </trkpt>
+      <trkpt lat="53.568300" lon="9.904432">
+        <name>Point_Lane_0_4</name>
+      </trkpt>
+      <trkpt lat="53.568346" lon="9.904309">
+        <name>Point_Lane_0_5</name>
+      </trkpt>
+      <trkpt lat="53.568396" lon="9.904191">
+        <name>Point_Lane_0_6</name>
+      </trkpt>
+      <trkpt lat="53.568452" lon="9.904081">
+        <name>Point_Lane_0_7</name>
+      </trkpt>
+      <trkpt lat="53.568516" lon="9.903984">
+        <name>Point_Lane_0_8</name>
+      </trkpt>
+      <trkpt lat="53.568584" lon="9.903896">
+        <name>Point_Lane_0_9</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>Lane_2</name>
+    <trkseg>
+      <trkpt lat="53.568267" lon="9.904596">
+        <name>Point_Lane_2_0</name>
+      </trkpt>
+      <trkpt lat="53.568308" lon="9.904500">
+        <name>Point_Lane_2_1</name>
+      </trkpt>
+      <trkpt lat="53.568349" lon="9.904404">
+        <name>Point_Lane_2_2</name>
+      </trkpt>
+      <trkpt lat="53.568390" lon="9.904309">
+        <name>Point_Lane_2_3</name>
+      </trkpt>
+      <trkpt lat="53.568431" lon="9.904215">
+        <name>Point_Lane_2_4</name>
+      </trkpt>
+      <trkpt lat="53.568473" lon="9.904120">
+        <name>Point_Lane_2_5</name>
+      </trkpt>
+      <trkpt lat="53.568514" lon="9.904025">
+        <name>Point_Lane_2_6</name>
+      </trkpt>
+      <trkpt lat="53.568555" lon="9.903930">
+        <name>Point_Lane_2_7</name>
+      </trkpt>
+      <trkpt lat="53.568596" lon="9.903834">
+        <name>Point_Lane_2_8</name>
+      </trkpt>
+      <trkpt lat="53.568637" lon="9.903738">
+        <name>Point_Lane_2_9</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>Lane_5</name>
+    <trkseg>
+      <trkpt lat="53.568606" lon="9.903629">
+        <name>Point_Lane_5_0</name>
+      </trkpt>
+      <trkpt lat="53.568616" lon="9.903588">
+        <name>Point_Lane_5_1</name>
+      </trkpt>
+      <trkpt lat="53.568628" lon="9.903549">
+        <name>Point_Lane_5_2</name>
+      </trkpt>
+      <trkpt lat="53.568642" lon="9.903513">
+        <name>Point_Lane_5_3</name>
+      </trkpt>
+      <trkpt lat="53.568657" lon="9.903479">
+        <name>Point_Lane_5_4</name>
+      </trkpt>
+      <trkpt lat="53.568673" lon="9.903444">
+        <name>Point_Lane_5_5</name>
+      </trkpt>
+      <trkpt lat="53.568689" lon="9.903409">
+        <name>Point_Lane_5_6</name>
+      </trkpt>
+      <trkpt lat="53.568702" lon="9.903373">
+        <name>Point_Lane_5_7</name>
+      </trkpt>
+      <trkpt lat="53.568713" lon="9.903333">
+        <name>Point_Lane_5_8</name>
+      </trkpt>
+      <trkpt lat="53.568722" lon="9.903292">
+        <name>Point_Lane_5_9</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>Lane_7</name>
+    <trkseg>
+      <trkpt lat="53.568271" lon="9.902025">
+        <name>Point_Lane_7_0</name>
+      </trkpt>
+      <trkpt lat="53.568236" lon="9.902036">
+        <name>Point_Lane_7_1</name>
+      </trkpt>
+      <trkpt lat="53.568203" lon="9.902051">
+        <name>Point_Lane_7_2</name>
+      </trkpt>
+      <trkpt lat="53.568169" lon="9.902070">
+        <name>Point_Lane_7_3</name>
+      </trkpt>
+      <trkpt lat="53.568137" lon="9.902091">
+        <name>Point_Lane_7_4</name>
+      </trkpt>
+      <trkpt lat="53.568103" lon="9.902110">
+        <name>Point_Lane_7_5</name>
+      </trkpt>
+      <trkpt lat="53.568069" lon="9.902124">
+        <name>Point_Lane_7_6</name>
+      </trkpt>
+      <trkpt lat="53.568035" lon="9.902129">
+        <name>Point_Lane_7_7</name>
+      </trkpt>
+      <trkpt lat="53.568000" lon="9.902122">
+        <name>Point_Lane_7_8</name>
+      </trkpt>
+      <trkpt lat="53.567966" lon="9.902106">
+        <name>Point_Lane_7_9</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>
