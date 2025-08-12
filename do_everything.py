@@ -11,7 +11,7 @@ from ultralytics import YOLO
 from pyproj import Transformer
 import pandas as pd
 from pathlib import Path
-from polygon_centerline_12 import polygon_centerline
+from polygon_centerline_2 import polygon_centerline_polynomial_only
 import xml.etree.ElementTree as ET
 import math
 import logging
@@ -578,8 +578,7 @@ def main():
             logging.info(f"Konnte Originalbild nicht laden: {img_path}")
             continue
 
-        polygon_records = []  # Liste für CSV-Daten
-
+        polygon_records = []
         for i, polygon in enumerate(vectorized_data):
             if polygon.is_empty:
                 print(f"⚠️ Polygon {i} ist leer.")
@@ -601,7 +600,6 @@ def main():
                 cv2.polylines(polygon_overlay, [pts_np], isClosed=True, color=(0, 0, 255), thickness=2)
                 cv2.fillPoly(polygon_overlay, [pts_np], color=(200, 200, 255))
 
-                # Punkte als String für CSV speichern
                 points_str = " ".join([f"{pt[0]},{pt[1]}" for pt in pts])
                 polygon_id = f"{i}" if len(polygons_to_draw) == 1 else f"{i}.{j}"
                 polygon_records.append({
@@ -614,7 +612,6 @@ def main():
         print(f"✅ Polygonüberlagerung gespeichert: {polygon_overlay_path}")
         logging.info(f"Polygonüberlagerung gespeichert: {polygon_overlay_path}")
 
-        # Polygon CSV speichern
         polygon_csv_path = os.path.join(output_dir_final, f"polygons_{os.path.basename(img_path).replace('.png', '.csv')}")
         df_polygons = pd.DataFrame(polygon_records)
         df_polygons.to_csv(polygon_csv_path, index=False)
@@ -636,8 +633,8 @@ def main():
             try:
                 print(f"➕ Berechne Mittellinie für Polygon {i}")
                 logging.info(f"Berechne Mittellinie für Polygon {i} für {gml_file}")
-                centerline, avg_width, avg_xy = polygon_centerline(
-                    polygon, dx=5.0, show_plots=False, smooth_window=19, smooth_order=1
+                centerline, avg_width, avg_xy, poly_centerline_coords = polygon_centerline_polynomial_only(
+                    polygon, dx=5.0, degrees=[3], smooth_window=51, smooth_order=3, min_x=min_x, min_y=min_y, scale=scale, show_plots=False
                 )
                 if not isinstance(centerline, LineString):
                     print(f"⚠️ Keine gültige Mittellinie für Polygon {i}.")
@@ -645,7 +642,6 @@ def main():
                     continue
                 print(f"ℹ️ Breite: {avg_width:.2f} | Abstand AVG(x+y): {avg_xy:.2f}")
                 logging.info(f"Breite: {avg_width:.2f} | Abstand AVG(x+y): {avg_xy:.2f} für Polygon {i} in {gml_file}")
-                print_centerline_geocoords(centerline, min_x, min_y, scale)
 
                 x_line, y_line = centerline.xy
                 for j in range(len(x_line) - 1):
@@ -653,19 +649,10 @@ def main():
                     pt2 = (int(x_line[j + 1]), int(y_line[j + 1]))
                     cv2.line(overlay, pt1, pt2, color=(0, 255, 0), thickness=2)
 
-                distances = np.linspace(0, centerline.length, 10)
-                sampled_points = [centerline.interpolate(d) for d in distances]
-                for k, pt in enumerate(sampled_points):
-                    x_img, y_img = pt.x, pt.y
-                    x_orig = x_img / scale + min_x
-                    y_orig = (target_size[1] - y_img) / scale + min_y
-                    lon, lat = transformer.transform(x_orig, y_orig)
-                    centerline_coords.append({
-                        "polygon_id": i,
-                        "point_index": k,
-                        "geocoordinate": f"({lon:.6f}, {lat:.6f})",
-                        "avg_width": avg_width  # Breite speichern
-                    })
+                for coord in poly_centerline_coords:
+                    coord["polygon_id"] = i
+                    centerline_coords.append(coord)
+
             except Exception as e:
                 print(f"⚠️ Fehler bei Polygon {i}: {e}")
                 logging.info(f"Fehler bei Polygon {i} für {gml_file}: {str(e)}")
@@ -688,7 +675,6 @@ def main():
 
         print(f"🎉 Verarbeitung von {gml_file} abgeschlossen.")
         logging.info(f"Verarbeitung von {gml_file} abgeschlossen.")
-
 
 if __name__ == "__main__":
     main()
