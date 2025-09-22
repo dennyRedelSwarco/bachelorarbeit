@@ -1,3 +1,5 @@
+# do_everything_app.py
+
 import os
 import geopandas as gpd
 from shapely.geometry import LineString, Polygon, GeometryCollection
@@ -15,6 +17,10 @@ from polygon_centerline_2 import polygon_centerline_polynomial_only
 import xml.etree.ElementTree as ET
 import math
 import logging
+from generate_xml import generate_map_its_xml
+from flask import Flask, request, send_file, render_template_string, redirect, url_for
+import tempfile
+import shutil
 
 # 📁 Ordner vorbereiten
 input_dir_gml = "gml_data"
@@ -335,124 +341,6 @@ def plot_skeletons_on_image(img_path, vectorized_data, output_path, scale_info):
         logging.info(f"Fehler beim Plotten für {img_path}: {str(e)}")
         return None
 
-def generate_map_its_xml(centerline_coords, output_path, min_x, min_y, scale, lower_corner_wgs84, upper_corner_wgs84):
-    """Generiert eine Utopia-konforme MAPEM XML-Datei basierend auf centerline_coords."""
-    try:
-        mapem_elem = ET.Element("MAPEM")
-        
-        # Header
-        header_elem = ET.SubElement(mapem_elem, "header")
-        ET.SubElement(header_elem, "protocolVersion").text = "2"
-        ET.SubElement(header_elem, "messageID").text = "5"
-        ET.SubElement(header_elem, "stationID").text = "19531"
-        
-        # Map
-        map_elem = ET.SubElement(mapem_elem, "map")
-        ET.SubElement(map_elem, "msgIssueRevision").text = "0"
-        
-        # Intersections
-        intersections_elem = ET.SubElement(map_elem, "intersections")
-        intersection_elem = ET.SubElement(intersections_elem, "IntersectionGeometry")
-        ET.SubElement(intersection_elem, "name").text = "MAP_ITS_17_1729_2.1"
-        
-        # ID
-        id_elem = ET.SubElement(intersection_elem, "id")
-        ET.SubElement(id_elem, "region").text = "3"
-        ET.SubElement(id_elem, "id").text = "1729"
-        
-        ET.SubElement(intersection_elem, "revision").text = "1"
-        
-        # RefPoint
-        if not centerline_coords:
-            print("❌ Keine Mittelliniendaten vorhanden. XML-Generierung abgebrochen.")
-            logging.info("Keine Mittelliniendaten vorhanden. XML-Generierung abgebrochen.")
-            return
-        
-        first_coord = centerline_coords[0]["geocoordinate"]
-        lon, lat = map(float, first_coord.strip("()").split(","))
-        ref_point = ET.SubElement(intersection_elem, "refPoint")
-        ET.SubElement(ref_point, "lat").text = str(int(lat * 10000000))
-        ET.SubElement(ref_point, "long").text = str(int(lon * 10000000))
-        
-        # Lane Width (Standardwert oder Durchschnitt)
-        avg_width = centerline_coords[0].get("avg_width", 3.25)  # Fallback auf 3.25m
-        ET.SubElement(intersection_elem, "laneWidth").text = str(int(avg_width * 100))  # In cm
-        
-        # Speed Limits
-        speed_limits_elem = ET.SubElement(intersection_elem, "speedLimits")
-        speed_limit_elem = ET.SubElement(speed_limits_elem, "RegulatorySpeedLimit")
-        type_elem = ET.SubElement(speed_limit_elem, "type")
-        ET.SubElement(type_elem, "vehicleMaxSpeed")
-        ET.SubElement(speed_limit_elem, "speed").text = "694"
-        
-        # Transformer für Koordinaten
-        transformer = Transformer.from_crs("EPSG:4326", "EPSG:25832", always_xy=True)
-        ref_x, ref_y = transformer.transform(lon, lat)
-        
-        # LaneSet
-        lane_set_elem = ET.SubElement(intersection_elem, "laneSet")
-        
-        lane_groups = {}
-        for coord in centerline_coords:
-            polygon_id = coord["polygon_id"]
-            if polygon_id not in lane_groups:
-                lane_groups[polygon_id] = []
-            lane_groups[polygon_id].append(coord)
-        
-        for lane_id, (polygon_id, coords) in enumerate(lane_groups.items(), 10):
-            lane_elem = ET.SubElement(lane_set_elem, "GenericLane")
-            ET.SubElement(lane_elem, "laneID").text = str(lane_id)
-            ET.SubElement(lane_elem, "ingressApproach").text = "3"
-            
-            # Lane Attributes
-            lane_attrs_elem = ET.SubElement(lane_elem, "laneAttributes")
-            ET.SubElement(lane_attrs_elem, "directionalUse").text = "10"
-            ET.SubElement(lane_attrs_elem, "sharedWith").text = "0001100000"
-            lane_type = ET.SubElement(lane_attrs_elem, "laneType")
-            ET.SubElement(lane_type, "vehicle").text = "00000000"
-            
-            # NodeList
-            node_list_elem = ET.SubElement(lane_elem, "nodeList")
-            nodes_elem = ET.SubElement(node_list_elem, "nodes")
-            
-            for i, coord in enumerate(coords):
-                lon_p, lat_p = map(float, coord["geocoordinate"].strip("()").split(","))
-                x_p, y_p = transformer.transform(lon_p, lat_p)
-                x_cm = int((x_p - ref_x) * 100)
-                y_cm = int((y_p - ref_y) * 100)
-                
-                # Berechne relative Breite basierend auf Geokoordinaten
-                avg_width = coord.get("avg_width", 3.25)  # Fallback auf 3.25m
-                d_width = int(avg_width * 100)  # In cm
-                
-                node_elem = ET.SubElement(nodes_elem, "NodeXY")
-                delta_elem = ET.SubElement(node_elem, "delta")
-                node_xy_tag = f"node-XY{6 if i % 2 == 0 else 5}"
-                node_xy_elem = ET.SubElement(delta_elem, node_xy_tag)
-                ET.SubElement(node_xy_elem, "x").text = str(x_cm)
-                ET.SubElement(node_xy_elem, "y").text = str(y_cm)
-                
-                # Attributes mit dWidth
-                attributes_elem = ET.SubElement(node_elem, "attributes")
-                ET.SubElement(attributes_elem, "dWidth").text = str(d_width)
-            
-            # ConnectsTo
-            connects_to_elem = ET.SubElement(lane_elem, "ConnectsTo")
-            connecting_lane_elem = ET.SubElement(connects_to_elem, "ConnectingLane")
-            ET.SubElement(connecting_lane_elem, "lane").text = str(lane_id + 1 if lane_id < 10 + len(lane_groups) - 1 else 10)
-            ET.SubElement(connecting_lane_elem, "maneuver").text = "100000000000"
-        
-        # XML schreiben
-        tree = ET.ElementTree(mapem_elem)
-        ET.indent(tree, space="  ", level=0)
-        tree.write(output_path, encoding="utf-8", xml_declaration=True)
-        print(f"✅ MAPEM XML gespeichert: {output_path}")
-        logging.info(f"MAPEM XML gespeichert: {output_path}")
-    
-    except Exception as e:
-        print(f"❌ Fehler beim Erstellen der XML-Datei: {str(e)}")
-        logging.info(f"Fehler beim Erstellen der XML-Datei für {output_path}: {str(e)}")
-
 def get_distinct_color(i, total=30):
     """Erzeugt deutlich unterscheidbare RGB-Farben auf Basis von HSL."""
     import colorsys
@@ -480,203 +368,268 @@ def print_centerline_geocoords(centerline: LineString, min_x: float, min_y: floa
         print(f"  Punkt {i+1}: ({lat:.6f}, {lon:.6f})")
         logging.info(f"  Punkt {i+1}: ({lat:.6f}, {lon:.6f})")
 
-def main():
-    for gml_file in os.listdir(input_dir_gml):
-        if not gml_file.endswith(".gml"):
+def process_single_gml(gml_path, gml_file_name):
+    print(f"📂 Verarbeite GML-Datei: {gml_file_name}")
+    logging.info(f"Verarbeite GML-Datei: {gml_file_name}")
+
+    # Render GML to image
+    img_path = os.path.join(output_dir_images, gml_file_name.replace(".gml", ".png"))
+    points, min_x, min_y, scale, lower_corner_wgs84, upper_corner_wgs84 = render_gml_to_image(gml_path, img_path)
+    if points is None:
+        print(f"❌ Keine gültigen Linien in {gml_file_name}. Überspringe.")
+        logging.info(f"Keine gültigen Linien in {gml_file_name}. Überspringe.")
+        return None
+
+    # Apply YOLO model to get masks
+    masks, h_orig, w_orig = apply_yolo_model(img_path)
+    if masks is None or not masks:
+        print(f"❌ Keine gültigen Masken für {gml_file_name}. Überspringe.")
+        logging.info(f"Keine gültigen Masken für {gml_file_name}. Überspringe.")
+        return None
+
+    # Debugging: Save individual masks to inspect them
+    for i, mask in enumerate(masks):
+        mask_path = os.path.join(output_dir_masks, f"mask_{i}_{os.path.basename(img_path)}")
+        cv2.imwrite(mask_path, mask)
+        print(f"✅ Maske {i} gespeichert: {mask_path} (Max-Wert: {mask.max()})")
+        logging.info(f"Maske {i} gespeichert: {mask_path} (Max-Wert: {mask.max()})")
+
+    # Plot combined masks on original image
+    original = cv2.imread(img_path, cv2.IMREAD_COLOR)
+    if original is None:
+        print(f"❌ Konnte Originalbild nicht laden: {img_path}")
+        logging.info(f"Konnte Originalbild nicht laden: {img_path}")
+        return None
+    combined_mask = original.copy()
+    for i, mask in enumerate(masks):
+        if mask.max() == 0:
+            print(f"⚠️ Maske {i} für {gml_file_name} ist leer (Max-Wert: {mask.max()}).")
+            logging.info(f"Maske {i} für {gml_file_name} ist leer (Max-Wert: {mask.max()}).")
             continue
-        gml_path = os.path.join(input_dir_gml, gml_file)
+        color = get_distinct_color(i)
+        mask_colored = np.zeros_like(combined_mask)
+        mask_colored[mask == 255] = color
+        combined_mask = cv2.addWeighted(combined_mask, 0.7, mask_colored, 0.3, 0)
+    combined_mask_path = os.path.join(output_dir_final, f"masks_combined_{os.path.basename(img_path)}")
+    cv2.imwrite(combined_mask_path, combined_mask)
+    print(f"✅ Kombinierte Pixelmasken gespeichert: {combined_mask_path}")
+    logging.info(f"Kombinierte Pixelmasken gespeichert: {combined_mask_path}")
+
+    # Plot raw contours before validation
+    contour_overlay = cv2.imread(img_path, cv2.IMREAD_COLOR)
+    if contour_overlay is None:
+        print(f"❌ Konnte Originalbild nicht laden: {img_path}")
+        logging.info(f"Konnte Originalbild nicht laden: {img_path}")
+        return None
+    for i, mask in enumerate(masks):
+        mask_bin = (mask > 127).astype(np.uint8)
+        contours, _ = cv2.findContours(mask_bin, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        if not contours:
+            print(f"⚠️ Keine Konturen in Maske {i} für {gml_file_name} gefunden.")
+            logging.info(f"Keine Konturen in Maske {i} für {gml_file_name} gefunden.")
+            continue
+        color = get_distinct_color(i)
+        cv2.drawContours(contour_overlay, contours, -1, color, thickness=2)
+    contour_overlay_path = os.path.join(output_dir_final, f"raw_contours_{os.path.basename(img_path)}")
+    cv2.imwrite(contour_overlay_path, contour_overlay)
+    print(f"✅ Rohe Konturen gespeichert: {contour_overlay_path}")
+    logging.info(f"Rohe Konturen gespeichert: {contour_overlay_path}")
+
+    # Vectorize masks and collect invalid contours
+    vectorized_data, invalid_contours = vectorize_masks(masks, img_path, iterations=0, tolerance=2.0)
+    if not vectorized_data:
+        print(f"⚠️ Keine gültigen Polygone für {gml_file_name}. Überspringe Polygon-Plotting.")
+        logging.info(f"Keine gültigen Polygone für {gml_file_name}. Überspringe Polygon-Plotting.")
+        if invalid_contours:
+            invalid_contour_overlay = cv2.imread(img_path, cv2.IMREAD_COLOR)
+            if invalid_contour_overlay is None:
+                print(f"❌ Konnte Originalbild nicht laden: {img_path}")
+                logging.info(f"Konnte Originalbild nicht laden: {img_path}")
+                return None
+            for mask_idx, contour in invalid_contours:
+                cv2.drawContours(invalid_contour_overlay, [contour], -1, (255, 0, 0), thickness=2)
+            invalid_contour_path = os.path.join(output_dir_final, f"invalid_contours_{os.path.basename(img_path)}")
+            cv2.imwrite(invalid_contour_path, invalid_contour_overlay)
+            print(f"✅ Ungültige Konturen gespeichert: {invalid_contour_path}")
+            logging.info(f"Ungültige Konturen gespeichert: {invalid_contour_path}")
+        return None
+
+    # Plot validated polygons
+    polygon_overlay = cv2.imread(img_path, cv2.IMREAD_COLOR)
+    if polygon_overlay is None:
+        print(f"❌ Konnte Originalbild nicht laden: {img_path}")
+        logging.info(f"Konnte Originalbild nicht laden: {img_path}")
+        return None
+
+    polygon_records = []
+    for i, polygon in enumerate(vectorized_data):
+        if polygon.is_empty:
+            print(f"⚠️ Polygon {i} ist leer.")
+            logging.info(f"Polygon {i} ist leer für {gml_file_name}")
+            continue
+        polygons_to_draw = [polygon] if polygon.geom_type == "Polygon" else list(polygon.geoms)
+        for j, poly in enumerate(polygons_to_draw):
+            if poly.geom_type != "Polygon":
+                print(f"⚠️ Objekt {i}.{j} ist kein Polygon, sondern {poly.geom_type}. Überspringe.")
+                logging.info(f"Objekt {i}.{j} ist kein Polygon, sondern {poly.geom_type} für {gml_file_name}")
+                continue
+            x, y = poly.exterior.xy
+            pts = [(int(px), int(py)) for px, py in zip(x, y) if 0 <= px < target_size[0] and 0 <= py < target_size[1]]
+            if len(pts) < 3:
+                print(f"⚠️ Polygon {i}.{j} hat zu wenige gültige Punkte: {len(pts)}")
+                logging.info(f"Polygon {i}.{j} hat zu wenige gültige Punkte: {len(pts)} für {gml_file_name}")
+                continue
+            pts_np = np.array(pts, np.int32)
+            cv2.polylines(polygon_overlay, [pts_np], isClosed=True, color=(0, 0, 255), thickness=2)
+            cv2.fillPoly(polygon_overlay, [pts_np], color=(200, 200, 255))
+
+            points_str = " ".join([f"{pt[0]},{pt[1]}" for pt in pts])
+            polygon_id = f"{i}" if len(polygons_to_draw) == 1 else f"{i}.{j}"
+            polygon_records.append({
+                "polygon_id": polygon_id,
+                "points": points_str
+            })
+
+    polygon_overlay_path = os.path.join(output_dir_final, f"polygons_overlay_{os.path.basename(img_path)}")
+    cv2.imwrite(polygon_overlay_path, polygon_overlay)
+    print(f"✅ Polygonüberlagerung gespeichert: {polygon_overlay_path}")
+    logging.info(f"Polygonüberlagerung gespeichert: {polygon_overlay_path}")
+
+    polygon_csv_path = os.path.join(output_dir_final, f"polygons_{os.path.basename(img_path).replace('.png', '.csv')}")
+    df_polygons = pd.DataFrame(polygon_records)
+    df_polygons.to_csv(polygon_csv_path, index=False)
+    print(f"✅ Polygon-CSV gespeichert: {polygon_csv_path}")
+    logging.info(f"Polygon-CSV gespeichert: {polygon_csv_path}")
+
+    # Calculate centerlines and generate XML
+    centerline_coords = []
+    overlay = cv2.imread(img_path, cv2.IMREAD_COLOR)
+    if overlay is None:
+        print(f"❌ Konnte Originalbild nicht laden: {img_path}")
+        logging.info(f"Konnte Originalbild nicht laden: {img_path}")
+        return None
+    for i, polygon in enumerate(vectorized_data):
+        if polygon.geom_type != "Polygon":
+            print(f"⚠️ Polygon {i} ist kein einfacher Polygon (Typ: {polygon.geom_type}). Überspringe.")
+            logging.info(f"Polygon {i} ist kein einfacher Polygon (Typ: {polygon.geom_type}) für {gml_file_name}")
+            continue
+        try:
+            print(f"➕ Berechne Mittellinie für Polygon {i}")
+            logging.info(f"Berechne Mittellinie für Polygon {i} für {gml_file_name}")
+            centerline, avg_width, avg_xy, poly_centerline_coords = polygon_centerline_polynomial_only(
+                polygon,
+                dx=5.0,
+                degrees=[3],
+                smooth_window=51,
+                smooth_order=3,
+                min_x=min_x,
+                min_y=min_y,
+                scale=scale,
+                lower_corner_wgs84=lower_corner_wgs84,  # Hinzufügen
+                upper_corner_wgs84=upper_corner_wgs84,  # Hinzufügen
+                show_plots=False
+            )
+            if not isinstance(centerline, LineString):
+                print(f"⚠️ Keine gültige Mittellinie für Polygon {i}.")
+                logging.info(f"Keine gültige Mittellinie für Polygon {i} für {gml_file_name}")
+                continue
+            print(f"ℹ️ Breite: {avg_width:.2f} cm | Abstand AVG(x+y): {avg_xy:.2f}")
+            logging.info(f"Breite: {avg_width:.2f} cm | Abstand AVG(x+y): {avg_xy:.2f} für Polygon {i} in {gml_file_name}")
+
+            x_line, y_line = centerline.xy
+            for j in range(len(x_line) - 1):
+                pt1 = (int(x_line[j]), int(y_line[j]))
+                pt2 = (int(x_line[j + 1]), int(y_line[j + 1]))
+                cv2.line(overlay, pt1, pt2, color=(0, 255, 0), thickness=2)
+
+            for coord in poly_centerline_coords:
+                coord["polygon_id"] = i
+                centerline_coords.append(coord)
+
+        except Exception as e:
+            print(f"⚠️ Fehler bei Polygon {i}: {e}")
+            logging.info(f"Fehler bei Polygon {i} für {gml_file_name}: {str(e)}")
+            continue
+
+    centerlines_path = os.path.join(output_dir_final, f"centerlines_{os.path.basename(img_path)}")
+    cv2.imwrite(centerlines_path, overlay)
+    print(f"✅ Bild mit Mittellinien gespeichert: {centerlines_path}")
+    logging.info(f"Bild mit Mittellinien gespeichert: {centerlines_path}")
+
+    centerline_csv_path = os.path.join(output_dir_final, f"centerlines_{os.path.basename(img_path).replace('.png', '.csv')}")
+    df_centerline = pd.DataFrame(centerline_coords)
+    df_centerline.to_csv(centerline_csv_path, index=False)
+    print(f"✅ GPS-Koordinaten der Mittellinien gespeichert: {centerline_csv_path}")
+    logging.info(f"GPS-Koordinaten der Mittellinien gespeichert: {centerline_csv_path}")
+
+    # Generate MAP ITS XML
+    xml_path = os.path.join(output_dir_final, f"map_its_{os.path.basename(img_path).replace('.png', '.xml')}")
+    generate_map_its_xml(centerline_coords, xml_path, lower_corner_wgs84)
+
+    print(f"🎉 Verarbeitung von {gml_file_name} abgeschlossen.")
+    logging.info(f"Verarbeitung von {gml_file_name} abgeschlossen.")
+
+    return xml_path
+
+app = Flask(__name__)
+
+HTML_TEMPLATE = """
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GML Processing App</title>
+</head>
+<body>
+    <h1>Upload GML File</h1>
+    <form method="post" enctype="multipart/form-data" action="/upload">
+        <input type="file" name="file" accept=".gml">
+        <input type="submit" value="Upload and Process">
+    </form>
+    {% if xml_path %}
+    <h2>Processing Complete!</h2>
+    <p>Download the generated XML: <a href="/download/{{ xml_filename }}">Download XML</a></p>
+    {% endif %}
+</body>
+</html>
+"""
+
+@app.route('/', methods=['GET'])
+def index():
+    return render_template_string(HTML_TEMPLATE, xml_path=None)
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    if 'file' not in request.files:
+        return "No file part"
+    file = request.files['file']
+    if file.filename == '':
+        return "No selected file"
+    if file and file.filename.endswith('.gml'):
+        # Create a temporary directory for this upload
+        temp_dir = tempfile.mkdtemp()
+        gml_path = os.path.join(temp_dir, file.filename)
+        file.save(gml_path)
         
-        print(f"📂 Verarbeite GML-Datei: {gml_file}")
-        logging.info(f"Verarbeite GML-Datei: {gml_file}")
+        # Process the file
+        xml_path = process_single_gml(gml_path, file.filename)
+        
+        # Clean up temp dir after processing
+        shutil.rmtree(temp_dir)
+        
+        if xml_path:
+            xml_filename = os.path.basename(xml_path)
+            return render_template_string(HTML_TEMPLATE, xml_path=xml_path, xml_filename=xml_filename)
+        else:
+            return "Processing failed."
+    return "Invalid file type. Please upload a .gml file."
 
-        # Render GML to image
-        img_path = os.path.join(output_dir_images, gml_file.replace(".gml", ".png"))
-        points, min_x, min_y, scale, lower_corner_wgs84, upper_corner_wgs84 = render_gml_to_image(gml_path, img_path)
-        if points is None:
-            print(f"❌ Keine gültigen Linien in {gml_file}. Überspringe.")
-            logging.info(f"Keine gültigen Linien in {gml_file}. Überspringe.")
-            continue
-
-        # Apply YOLO model to get masks
-        masks, h_orig, w_orig = apply_yolo_model(img_path)
-        if masks is None or not masks:
-            print(f"❌ Keine gültigen Masken für {gml_file}. Überspringe.")
-            logging.info(f"Keine gültigen Masken für {gml_file}. Überspringe.")
-            continue
-
-        # Debugging: Save individual masks to inspect them
-        for i, mask in enumerate(masks):
-            mask_path = os.path.join(output_dir_masks, f"mask_{i}_{os.path.basename(img_path)}")
-            cv2.imwrite(mask_path, mask)
-            print(f"✅ Maske {i} gespeichert: {mask_path} (Max-Wert: {mask.max()})")
-            logging.info(f"Maske {i} gespeichert: {mask_path} (Max-Wert: {mask.max()})")
-
-        # Plot combined masks on original image
-        original = cv2.imread(img_path, cv2.IMREAD_COLOR)
-        if original is None:
-            print(f"❌ Konnte Originalbild nicht laden: {img_path}")
-            logging.info(f"Konnte Originalbild nicht laden: {img_path}")
-            continue
-        combined_mask = original.copy()
-        for i, mask in enumerate(masks):
-            if mask.max() == 0:
-                print(f"⚠️ Maske {i} für {gml_file} ist leer (Max-Wert: {mask.max()}).")
-                logging.info(f"Maske {i} für {gml_file} ist leer (Max-Wert: {mask.max()}).")
-                continue
-            color = get_distinct_color(i)
-            mask_colored = np.zeros_like(combined_mask)
-            mask_colored[mask == 255] = color
-            combined_mask = cv2.addWeighted(combined_mask, 0.7, mask_colored, 0.3, 0)
-        combined_mask_path = os.path.join(output_dir_final, f"masks_combined_{os.path.basename(img_path)}")
-        cv2.imwrite(combined_mask_path, combined_mask)
-        print(f"✅ Kombinierte Pixelmasken gespeichert: {combined_mask_path}")
-        logging.info(f"Kombinierte Pixelmasken gespeichert: {combined_mask_path}")
-
-        # Plot raw contours before validation
-        contour_overlay = cv2.imread(img_path, cv2.IMREAD_COLOR)
-        if contour_overlay is None:
-            print(f"❌ Konnte Originalbild nicht laden: {img_path}")
-            logging.info(f"Konnte Originalbild nicht laden: {img_path}")
-            continue
-        for i, mask in enumerate(masks):
-            mask_bin = (mask > 127).astype(np.uint8)
-            contours, _ = cv2.findContours(mask_bin, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-            if not contours:
-                print(f"⚠️ Keine Konturen in Maske {i} für {gml_file} gefunden.")
-                logging.info(f"Keine Konturen in Maske {i} für {gml_file} gefunden.")
-                continue
-            color = get_distinct_color(i)
-            cv2.drawContours(contour_overlay, contours, -1, color, thickness=2)
-        contour_overlay_path = os.path.join(output_dir_final, f"raw_contours_{os.path.basename(img_path)}")
-        cv2.imwrite(contour_overlay_path, contour_overlay)
-        print(f"✅ Rohe Konturen gespeichert: {contour_overlay_path}")
-        logging.info(f"Rohe Konturen gespeichert: {contour_overlay_path}")
-
-        # Vectorize masks and collect invalid contours
-        vectorized_data, invalid_contours = vectorize_masks(masks, img_path, iterations=0, tolerance=2.0)
-        if not vectorized_data:
-            print(f"⚠️ Keine gültigen Polygone für {gml_file}. Überspringe Polygon-Plotting.")
-            logging.info(f"Keine gültigen Polygone für {gml_file}. Überspringe Polygon-Plotting.")
-            if invalid_contours:
-                invalid_contour_overlay = cv2.imread(img_path, cv2.IMREAD_COLOR)
-                if invalid_contour_overlay is None:
-                    print(f"❌ Konnte Originalbild nicht laden: {img_path}")
-                    logging.info(f"Konnte Originalbild nicht laden: {img_path}")
-                    continue
-                for mask_idx, contour in invalid_contours:
-                    cv2.drawContours(invalid_contour_overlay, [contour], -1, (255, 0, 0), thickness=2)
-                invalid_contour_path = os.path.join(output_dir_final, f"invalid_contours_{os.path.basename(img_path)}")
-                cv2.imwrite(invalid_contour_path, invalid_contour_overlay)
-                print(f"✅ Ungültige Konturen gespeichert: {invalid_contour_path}")
-                logging.info(f"Ungültige Konturen gespeichert: {invalid_contour_path}")
-            continue
-
-        # Plot validated polygons
-        polygon_overlay = cv2.imread(img_path, cv2.IMREAD_COLOR)
-        if polygon_overlay is None:
-            print(f"❌ Konnte Originalbild nicht laden: {img_path}")
-            logging.info(f"Konnte Originalbild nicht laden: {img_path}")
-            continue
-
-        polygon_records = []
-        for i, polygon in enumerate(vectorized_data):
-            if polygon.is_empty:
-                print(f"⚠️ Polygon {i} ist leer.")
-                logging.info(f"Polygon {i} ist leer für {gml_file}")
-                continue
-            polygons_to_draw = [polygon] if polygon.geom_type == "Polygon" else list(polygon.geoms)
-            for j, poly in enumerate(polygons_to_draw):
-                if poly.geom_type != "Polygon":
-                    print(f"⚠️ Objekt {i}.{j} ist kein Polygon, sondern {poly.geom_type}. Überspringe.")
-                    logging.info(f"Objekt {i}.{j} ist kein Polygon, sondern {poly.geom_type} für {gml_file}")
-                    continue
-                x, y = poly.exterior.xy
-                pts = [(int(px), int(py)) for px, py in zip(x, y) if 0 <= px < target_size[0] and 0 <= py < target_size[1]]
-                if len(pts) < 3:
-                    print(f"⚠️ Polygon {i}.{j} hat zu wenige gültige Punkte: {len(pts)}")
-                    logging.info(f"Polygon {i}.{j} hat zu wenige gültige Punkte: {len(pts)} für {gml_file}")
-                    continue
-                pts_np = np.array(pts, np.int32)
-                cv2.polylines(polygon_overlay, [pts_np], isClosed=True, color=(0, 0, 255), thickness=2)
-                cv2.fillPoly(polygon_overlay, [pts_np], color=(200, 200, 255))
-
-                points_str = " ".join([f"{pt[0]},{pt[1]}" for pt in pts])
-                polygon_id = f"{i}" if len(polygons_to_draw) == 1 else f"{i}.{j}"
-                polygon_records.append({
-                    "polygon_id": polygon_id,
-                    "points": points_str
-                })
-
-        polygon_overlay_path = os.path.join(output_dir_final, f"polygons_overlay_{os.path.basename(img_path)}")
-        cv2.imwrite(polygon_overlay_path, polygon_overlay)
-        print(f"✅ Polygonüberlagerung gespeichert: {polygon_overlay_path}")
-        logging.info(f"Polygonüberlagerung gespeichert: {polygon_overlay_path}")
-
-        polygon_csv_path = os.path.join(output_dir_final, f"polygons_{os.path.basename(img_path).replace('.png', '.csv')}")
-        df_polygons = pd.DataFrame(polygon_records)
-        df_polygons.to_csv(polygon_csv_path, index=False)
-        print(f"✅ Polygon-CSV gespeichert: {polygon_csv_path}")
-        logging.info(f"Polygon-CSV gespeichert: {polygon_csv_path}")
-
-        # Calculate centerlines and generate XML
-        centerline_coords = []
-        overlay = cv2.imread(img_path, cv2.IMREAD_COLOR)
-        if overlay is None:
-            print(f"❌ Konnte Originalbild nicht laden: {img_path}")
-            logging.info(f"Konnte Originalbild nicht laden: {img_path}")
-            continue
-        for i, polygon in enumerate(vectorized_data):
-            if polygon.geom_type != "Polygon":
-                print(f"⚠️ Polygon {i} ist kein einfacher Polygon (Typ: {polygon.geom_type}). Überspringe.")
-                logging.info(f"Polygon {i} ist kein einfacher Polygon (Typ: {polygon.geom_type}) für {gml_file}")
-                continue
-            try:
-                print(f"➕ Berechne Mittellinie für Polygon {i}")
-                logging.info(f"Berechne Mittellinie für Polygon {i} für {gml_file}")
-                centerline, avg_width, avg_xy, poly_centerline_coords = polygon_centerline_polynomial_only(
-                    polygon, dx=5.0, degrees=[3], smooth_window=51, smooth_order=3, min_x=min_x, min_y=min_y, scale=scale, show_plots=False
-                )
-                if not isinstance(centerline, LineString):
-                    print(f"⚠️ Keine gültige Mittellinie für Polygon {i}.")
-                    logging.info(f"Keine gültige Mittellinie für Polygon {i} für {gml_file}")
-                    continue
-                print(f"ℹ️ Breite: {avg_width:.2f} | Abstand AVG(x+y): {avg_xy:.2f}")
-                logging.info(f"Breite: {avg_width:.2f} | Abstand AVG(x+y): {avg_xy:.2f} für Polygon {i} in {gml_file}")
-
-                x_line, y_line = centerline.xy
-                for j in range(len(x_line) - 1):
-                    pt1 = (int(x_line[j]), int(y_line[j]))
-                    pt2 = (int(x_line[j + 1]), int(y_line[j + 1]))
-                    cv2.line(overlay, pt1, pt2, color=(0, 255, 0), thickness=2)
-
-                for coord in poly_centerline_coords:
-                    coord["polygon_id"] = i
-                    centerline_coords.append(coord)
-
-            except Exception as e:
-                print(f"⚠️ Fehler bei Polygon {i}: {e}")
-                logging.info(f"Fehler bei Polygon {i} für {gml_file}: {str(e)}")
-                continue
-
-        centerlines_path = os.path.join(output_dir_final, f"centerlines_{os.path.basename(img_path)}")
-        cv2.imwrite(centerlines_path, overlay)
-        print(f"✅ Bild mit Mittellinien gespeichert: {centerlines_path}")
-        logging.info(f"Bild mit Mittellinien gespeichert: {centerlines_path}")
-
-        centerline_csv_path = os.path.join(output_dir_final, f"centerlines_{os.path.basename(img_path).replace('.png', '.csv')}")
-        df_centerline = pd.DataFrame(centerline_coords)
-        df_centerline.to_csv(centerline_csv_path, index=False)
-        print(f"✅ GPS-Koordinaten der Mittellinien gespeichert: {centerline_csv_path}")
-        logging.info(f"GPS-Koordinaten der Mittellinien gespeichert: {centerline_csv_path}")
-
-        # Generate MAP ITS XML
-        xml_path = os.path.join(output_dir_final, f"map_its_{os.path.basename(img_path).replace('.png', '.xml')}")
-        generate_map_its_xml(centerline_coords, xml_path, min_x, min_y, scale, lower_corner_wgs84, upper_corner_wgs84)
-
-        print(f"🎉 Verarbeitung von {gml_file} abgeschlossen.")
-        logging.info(f"Verarbeitung von {gml_file} abgeschlossen.")
+@app.route('/download/<xml_filename>', methods=['GET'])
+def download_xml(xml_filename):
+    xml_path = os.path.join(output_dir_final, xml_filename)
+    if os.path.exists(xml_path):
+        return send_file(xml_path, as_attachment=True)
+    return "File not found."
 
 if __name__ == "__main__":
-    main()
-
-
+    app.run(debug=True)

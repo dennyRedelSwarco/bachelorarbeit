@@ -1,0 +1,240 @@
+@article{gaur2022cooperative,
+	author = {Alam, Md. Saniul and Georgakis, Panagiotis},
+	title = {The State of the Art of Cooperative and Connected Autonomous Vehicles from the Future Mobility Management Perspective: A Systematic Review},
+	journal = {Future Transportation},
+	volume = {2},
+	year = {2022},
+	number = {3},
+	pages = {589--604},
+	url = {https://www.mdpi.com/2673-7590/2/3/32},
+	issn = {2673-7590},
+	doi = {10.3390/futuretransp2030032},
+	note = {besucht am 16.06.2025}
+}
+
+@online{eu2018,
+	author = {Europäische Kommission},
+	title = {On the Road to Automated Mobility: An EU Strategy for Mobility of the Future},
+	year = {2018},
+	note = {besucht am 16.06.2025},
+	url = {https://eur-lex.europa.eu/legal-content/EN/AUTO/?uri=CELEX:52018DC0283}
+}
+
+@online{swarco,
+	author = {SWARCO},
+	title = {CCAM-Technologie: Ziele und Chancen},
+	note = {besucht am 17.06.2025},
+	url = {https://www.swarco.com/de/mobilitaet-der-zukunft/vernetzte-mobilitaet/ccam}
+}
+
+@article{Wagner2023,
+	author    = {Tamás Wágner and Tamás Ormándi and Tamás Tettamanti and István Varga},
+	title     = {SPaT/MAP V2X communication between traffic light and vehicles and a realization with digital twin},
+	journal   = {Computers and Electrical Engineering},
+	year      = {2023},
+	volume    = {106},
+	pages     = {108560},
+	doi       = {10.1016/j.compeleceng.2022.108560}
+}
+
+@misc{yolo11Architecture,
+	title={YOLOv8 to YOLO11: A Comprehensive Architecture In-depth Comparative Review}, 
+	author={Priyanto Hidayatullah and Nurjannah Syakrani and Muhammad Rizqi Sholahuddin and Trisna Gelar and Refdinal Tubagus},
+	year={2025},
+	eprint={2501.13400},
+	archivePrefix={arXiv},
+	primaryClass={cs.CV},
+	url={https://arxiv.org/abs/2501.13400}, 
+}
+
+@online{ultralytics2025,
+	author = {Ultralytics},
+	title = {Object Erkennung},
+	note = {besucht am 20.06.2025},
+	url = {https://www.ultralytics.com/de/glossary/object-detection}
+}
+
+@online{ultralytics2025-segmentation,
+	author = {Ultralytics},
+	title = {Instanz-Segmentierung},
+	year = {2025},
+	note = {zugriff am 20.06.2025},
+	url = {https://docs.ultralytics.com/tasks/segment/}
+}
+
+@online{ultralytics,
+	author = {Ultralytics},
+	title = {Ultralytics Dokumentation},
+	note = {besucht am 20.08.2025},
+	url = {https://docs.ultralytics.com/de/}
+}
+
+@online{ultralytics2025_segment_models,
+	author = {Ultralytics},
+	title = {Instanz-Segmentierung – Modelle},
+	note = {besucht am 21.08.2025},
+	url = {https://docs.ultralytics.com/tasks/segment/#models}
+}
+
+@online{ultralytics2025_yolov8_metrics,
+	author = {Ultralytics},
+	title = {Leistungsmetriken},
+	note = {besucht am 21.08.2025},
+	url = {https://docs.ultralytics.com/models/yolov8/#detection-performance-coco-val2017}
+}
+
+@online{ultralytics2025_yolo11_metrics,
+	author = {Ultralytics},
+	title = {Leistungsmetriken},
+	note = {besucht am 21.08.2025},
+	url = {https://docs.ultralytics.com/models/yolo11/#detection-performance-coco-val2017}
+}
+
+@online{ultralytics2025_yolo11_key_features,
+	author = {Ultralytics},
+	title = {Hauptmerkmale},
+	note = {Zugriff am 21.08.2025},
+	url = {https://docs.ultralytics.com/de/models/yolo11/#key-features}
+}
+
+@online{ultralytics2025_yolo12_overview,
+	author = {Ultralytics},
+	title = {Hauptmerkmale},
+	note = {Zugriff am 21.08.2025},
+	url = {https://docs.ultralytics.com/de/models/yolo12/#key-features}
+}
+
+@online{ultralytics2025_yolov8_features,
+	author = {Ultralytics},
+	title = {Hauptmerkmale},
+	note = {Zugriff am 21.08.2025},
+	url = {https://docs.ultralytics.com/de/models/yolov8/#key-features-of-yolov8}
+}
+
+@online{labelstudio2025,
+	author = {LabelStudio},
+	title = {Open Source Data Labeling Platform},
+	note = {Zugriff am 21.08.2025},
+	url = {https://labelstud.io/}
+}
+
+@online{uniaugsburg2025-ki-einfuehrung,
+	author = {{Universität Augsburg}},
+	title = {Was ist Künstliche Intelligenz?},
+	year = {2025},
+	url = {https://www.uni-augsburg.de/de/organisation/bibliothek/kurse-beratung/ki-in-der-literaturrecherche/},
+	note = {Zugriff am 22.08.2025}
+}
+
+@misc{mccarthy1955-dartmouth,
+	author = {McCarthy, John and Minsky, Marvin L. and Rochester, Nathaniel and Shannon, Claude E.},
+	title = {A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence},
+	year = {1955},
+	month = {aug},
+	day = {31},
+	institution = {Dartmouth College},
+	url = {http://jmc.stanford.edu/articles/dartmouth/dartmouth.pdf},
+	note = {Zugriff am 22.08.2025}
+}
+
+@online{rauch2025-kiarten,
+	author = {Rauch, Simon},
+	title = {Arten von künstlicher Intelligenz},
+	year = {2025},
+	url = {https://exb.de/blog/arten-von-kuenstlicher-intelligenz/},
+	organization = {ExB},
+	note = {Zugriff am 22.08.2025}
+}
+
+@inbook{eichstadt2024-ki,
+	author = {Eichstädt, Timm and Spieker, Stefan},
+	title = {Künstliche Intelligenz},
+	booktitle = {52 Stunden Informatik: Was jeder über Informatik wissen sollte},
+	edition = {2},
+	publisher = {Springer Fachmedien Wiesbaden},
+	year = {2024},
+	pages = {374--382},
+	isbn = {978-3-658-41837-3}
+}
+
+@online{ceosbay2025-metrics,
+	author = {{CEOsBay}},
+	title = {Metriken im Kontext der KI und des KI-Testings},
+	year = {2025},
+	url = {https://ceosbay.com/metriken-im-kontext-der-ki-und-des-ki-testings/},
+	note = {Zugriff am 22.08.2025}
+}
+
+@online{ultralytics2025-metrics,
+	author = {{Ultralytics}},
+	title = {Performance Metrics Deep Dive},
+	year = {2025},
+	url = {https://docs.ultralytics.com/reference/utils/metrics/},
+	note = {Zugriff am 22.08.2025}
+}
+
+@techreport{fraunhofer2025-ki,
+	author = {Abdelkafi, Nizar and Döbel, Inga and Drzewiecki, Johannes David and Meironke, Anja and Niekler, Andreas and Ries, Sonja},
+	title = {Künstliche Intelligenz (KI) im Unternehmenskontext: Literaturanalyse und Thesenpapier},
+	institution = {Fraunhofer-Zentrum für Internationales Management und Wissensökonomie IMW},
+	year = {2025},
+	address = {Leipzig},
+	note = {Zugriff am 25.08.2025}
+}
+
+@online{techpulsion2025-kiarten,
+	author = {{TechPulsion}},
+	title = {10 verschiedene Arten von KI anhand von Beispielen im Jahr 2025},
+	year = {2025},
+	url = {https://techpulsion.com/de/verschiedene-Arten-von-KI/},
+	note = {Zugriff am 25.08.2025}
+}
+
+@online{sabrepc2025-epochs,
+	author = {{SabrePC}},
+	title = {Epochs, Batch Size, and Iterations in Deep Learning},
+	year = {2025},
+	url = {https://www.sabrepc.com/blog/Deep-Learning-and-AI/Epochs-Batch-Size-Iterations},
+	note = {Zugriff am 25.08.2025}
+}
+
+@online{ultralytics2025-yolo-tasks,
+	author = {{Ultralytics}},
+	title = {Von Ultralytics YOLO11 unterstützte Computer-Vision-Aufgaben},
+	year = {2025},
+	url = {https://docs.ultralytics.com/de/tasks/?utm_source=chatgpt.com},
+	note = {Zugriff am 25.08.2025}
+}
+
+@online{geopandas2025,
+	author = {{GeoPandas}},
+	title = {GeoPandas User Guide: Reading and Writing Files},
+	year = {2025},
+	url = {https://geopandas.org/en/stable/docs/user_guide/io.html},
+	note = {Zugriff am 25.08.2025}
+}
+
+@online{shapely2025,
+	author = {{Shapely}},
+	title = {Shapely User Manual: Geometric Objects},
+	year = {2025},
+	url = {https://shapely.readthedocs.io/en/stable/manual.html},
+	note = {Zugriff am 26.08.2025}
+}
+
+@online{sklearn2025,
+	author = {{Scikit-learn}},
+	title = {Scikit-learn User Guide: RANSAC Regressor},
+	year = {2025},
+	url = {https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RANSACRegressor.html},
+	note = {Zugriff am 26.08.2025}
+}
+
+@misc{t3000redel,
+	author = {{Denny Redel}},
+	title = {Automatisierung der Digitalisierung von Kreuzungslageplänen},
+	year = {2025},
+	note = {Unveröffentlichte PowerPoint-Präsentation, erstellt im Rahmen der T3_3000 an der Dualen Hochschule Baden-Württemberg Stuttgart},
+	month = {6},
+	day = {5}
+}

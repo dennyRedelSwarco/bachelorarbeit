@@ -1,0 +1,56 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GML Upload and Download</title>
+    <script>
+        async function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            if (!file) {
+                alert('Please select a .gml file');
+                return;
+            }
+            if (!file.name.endsWith('.gml')) {
+                alert('Please upload a .gml file');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Upload failed');
+                }
+
+                const data = await response.json();
+                if (data.xml_filename) {
+                    const downloadLink = document.getElementById('downloadLink');
+                    downloadLink.href = `http://127.0.0.1:5000/download/${data.xml_filename}`;
+                    downloadLink.style.display = 'block';
+                    downloadLink.textContent = `Download ${data.xml_filename}`;
+                } else {
+                    alert('Processing failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred during upload');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Upload GML File</h1>
+    <input type="file" id="fileInput" accept=".gml">
+    <button onclick="uploadFile()">Upload and Process</button>
+    <a id="downloadLink" style="display: none;" download>Download XML</a>
+</body>
+</html>

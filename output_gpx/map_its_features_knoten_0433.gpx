@@ -1,0 +1,493 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gpx version="1.1" creator="GPX Generator Script">
+  <trk>
+    <name> Lane 10</name>
+    <trkseg>
+      <trkpt lat="53.58423605127683" lon="10.076606521363727">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58426687653666" lon="10.07660730477459">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58429779166588" lon="10.076608090470907">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58432870679492" lon="10.076608876168686">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584358543489074" lon="10.076609634459784">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58438847005263" lon="10.076610395036257">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58441731818132" lon="10.076611128205865">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584445267614264" lon="10.07661183853651">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58447312717751" lon="10.076612546584318">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58450008804505" lon="10.076613231793006">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name> Lane 11</name>
+    <trkseg>
+      <trkpt lat="53.58405796368221" lon="10.07536887280739">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584079905972715" lon="10.07543786112589">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58410094002313" lon="10.075507883895659">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58412088745025" lon="10.075578785521909">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584138946215646" lon="10.075649790321616">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58415789412862" lon="10.075721875200523">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58417595280839" lon="10.075792880122302">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584194910141505" lon="10.075863907928298">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58421494722531" lon="10.075934812159735">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584235891112506" lon="10.07600483311366">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name> Lane 12</name>
+    <trkseg>
+      <trkpt lat="53.58458429582048" lon="10.076615371935283">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58458429582048" lon="10.076615371935283">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58458429582048" lon="10.076615371935283">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58458429582048" lon="10.076615371935283">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58458429582048" lon="10.076615371935283">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58458393634224" lon="10.076615362799114">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58454892917787" lon="10.076599819864212">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58451496901605" lon="10.076577807809581">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58448092713444" lon="10.076554887330238">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58444690427408" lon="10.076529852478098">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name> Lane 13</name>
+    <trkseg>
+      <trkpt lat="53.5840819546849" lon="10.076029776032943">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584061927163944" lon="10.07595781478527">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58404289767201" lon="10.075884821516997">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584024946570224" lon="10.075811855701303">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58400889219096" lon="10.075737880677451">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.583991939069676" lon="10.075663882889375">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58397588459827" lon="10.07558990797815">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58395894088877" lon="10.07551485311271">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58394296804846" lon="10.075441786761223">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58392493630747" lon="10.075367761828538">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name> Lane 14</name>
+    <trkseg>
+      <trkpt lat="53.58458429582048" lon="10.076615371935283">
+        <desc>Width: 30 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58458429582048" lon="10.076615371935283">
+        <desc>Width: 30 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58458429582048" lon="10.076615371935283">
+        <desc>Width: 30 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584584418139485" lon="10.0766017792561">
+        <desc>Width: 30 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58458459074258" lon="10.076582598475301">
+        <desc>Width: 30 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58458474567501" lon="10.076565381081346">
+        <desc>Width: 30 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58457088910791" lon="10.076546901220663">
+        <desc>Width: 30 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58453996819343" lon="10.076526779202826">
+        <desc>Width: 30 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584508964200566" lon="10.076505899783301">
+        <desc>Width: 30 cm</desc>
+      </trkpt>
+      <trkpt lat="53.5844779615627" lon="10.076484869365206">
+        <desc>Width: 30 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name> Lane 15</name>
+    <trkseg>
+      <trkpt lat="53.5844115665295" lon="10.076610982028646">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584436370527904" lon="10.076611612418265">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584461264395756" lon="10.076612245092848">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58448606839395" lon="10.07661287548435">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584510872392016" lon="10.076613505876791">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58453675482468" lon="10.0766141636786">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584561558822536" lon="10.07661479407296">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58458429582048" lon="10.076615371935283">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58458429582048" lon="10.076615371935283">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58458429582048" lon="10.076615371935283">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name> Lane 16</name>
+    <trkseg>
+      <trkpt lat="53.58400191537236" lon="10.076243761959239">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58398296647794" lon="10.076241769926707">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58396494345162" lon="10.076236780176437">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+      <trkpt lat="53.583947944314275" lon="10.076227888829958">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58392988576158" lon="10.076216855708568">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58391390371814" lon="10.076204817916594">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58389593503269" lon="10.076193787097166">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+      <trkpt lat="53.583878927740486" lon="10.076185801946416">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58386089520151" lon="10.076181869423268">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+      <trkpt lat="53.583842028023746" lon="10.07618078587183">
+        <desc>Width: 27 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name> Lane 17</name>
+    <trkseg>
+      <trkpt lat="53.58384702623519" lon="10.07609480769312">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58386195702422" lon="10.076103797485182">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58387689596328" lon="10.076111881120015">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58389191662049" lon="10.076120873207493">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58390693727695" lon="10.076129865301416">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58392194978167" lon="10.076139763566362">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58393696907807" lon="10.076148906700968">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58395089363647" lon="10.07615983477628">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+      <trkpt lat="53.583965904779966" lon="10.076169884089884">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+      <trkpt lat="53.583980907771256" lon="10.076180839576507">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name> Lane 18</name>
+    <trkseg>
+      <trkpt lat="53.583955885389095" lon="10.075364770920821">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+      <trkpt lat="53.583975948567165" lon="10.07543280499312">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58399393520156" lon="10.07550184384602">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584010925083525" lon="10.075571763824192">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58402691549579" lon="10.075642866979372">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58404290722348" lon="10.07571381915985">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58405890705706" lon="10.075783865225779">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584075887265975" lon="10.07585484261833">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584093963524424" lon="10.075923884093049">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584112947946714" lon="10.075991891256242">
+        <desc>Width: 20 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name> Lane 19</name>
+    <trkseg>
+      <trkpt lat="53.5841409048464" lon="10.075841840766923">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584132940585434" lon="10.075787860186228">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584122891645585" lon="10.075735790502597">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584110944558084" lon="10.075684881145845">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58409791086648" lon="10.07563485060301">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58408396895322" lon="10.07558585446883">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584068958088736" lon="10.075535773790257">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584055922976546" lon="10.075485894370143">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584043967636184" lon="10.075435891330539">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58403292997642" lon="10.075383796742713">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name> Lane 20</name>
+    <trkseg>
+      <trkpt lat="53.58401793641366" lon="10.075371784328981">
+        <desc>Width: 23 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58403989635194" lon="10.075438809220975">
+        <desc>Width: 23 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584061936617964" lon="10.075506893659474">
+        <desc>Width: 23 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58408190169738" lon="10.075575831855359">
+        <desc>Width: 23 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58410095853562" lon="10.075645804493028">
+        <desc>Width: 23 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584118935539536" lon="10.075715900836213">
+        <desc>Width: 23 cm</desc>
+      </trkpt>
+      <trkpt lat="53.5841369043537" lon="10.075786903407714">
+        <desc>Width: 23 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58415496299495" lon="10.075857908321373">
+        <desc>Width: 23 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58417294123179" lon="10.07592785381419">
+        <desc>Width: 23 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58419190799276" lon="10.07599782447561">
+        <desc>Width: 23 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name> Lane 21</name>
+    <trkseg>
+      <trkpt lat="53.58398193345086" lon="10.075347002569131">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+      <trkpt lat="53.583996892807974" lon="10.075402822132512">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58401094258171" lon="10.075459827141872">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58402490245848" lon="10.075516829907066">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58403895217745" lon="10.075573834991305">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58405192343392" lon="10.07563081273013">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58406596359265" lon="10.07568887508367">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+      <trkpt lat="53.5840789252879" lon="10.075746910089478">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584091896461324" lon="10.075803887934091">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58410594604247" lon="10.075860893202101">
+        <desc>Width: 26 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name> Lane 22</name>
+    <trkseg>
+      <trkpt lat="53.583955893534196" lon="10.07536386475528">
+        <desc>Width: 19 cm</desc>
+      </trkpt>
+      <trkpt lat="53.5839718946639" lon="10.075423789413923">
+        <desc>Width: 19 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58398689633638" lon="10.075484897241546">
+        <desc>Width: 19 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584001889830866" lon="10.075546911278563">
+        <desc>Width: 19 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58401689279778" lon="10.07560786816454">
+        <desc>Width: 19 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584030897662515" lon="10.075669857186357">
+        <desc>Width: 19 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584044902494895" lon="10.07573184624878">
+        <desc>Width: 19 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58405890729493" lon="10.075793835351813">
+        <desc>Width: 19 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58407391013505" lon="10.075854792405824">
+        <desc>Width: 19 cm</desc>
+      </trkpt>
+      <trkpt lat="53.5840899015093" lon="10.075915774610342">
+        <desc>Width: 19 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name> Lane 23</name>
+    <trkseg>
+      <trkpt lat="53.58406793251689" lon="10.075799804922513">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58408091223641" lon="10.07581584504742">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58409295794688" lon="10.075835789088229">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58410290813244" lon="10.075858852235275">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58410988310992" lon="10.075882897269164">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58411594172997" lon="10.075908882851655">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+      <trkpt lat="53.584122908547904" lon="10.075933834070014">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58412996523012" lon="10.075958787579138">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58413992489977" lon="10.075980793577505">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+      <trkpt lat="53.58415196922393" lon="10.07600088872111">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>

@@ -16,10 +16,10 @@
         </id>
         <revision>1</revision>
         <refPoint>
-          <lat>535675359</lat>
-          <long>100011810</long>
+          <lat>535670837</lat>
+          <long>100008748</long>
         </refPoint>
-        <laneWidth>4462</laneWidth>
+        <laneWidth>44</laneWidth>
         <speedLimits>
           <RegulatorySpeedLimit>
             <type>
@@ -44,121 +44,123 @@
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>0</x>
-                      <y>0</y>
+                      <x>1956</x>
+                      <y>5059</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>4462</dWidth>
+                    <dWidth>44</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>-43</x>
-                      <y>244</y>
+                      <x>1913</x>
+                      <y>5304</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>4462</dWidth>
+                    <dWidth>44</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>-92</x>
-                      <y>477</y>
+                      <x>1863</x>
+                      <y>5537</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>4462</dWidth>
+                    <dWidth>44</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>-135</x>
-                      <y>721</y>
+                      <x>1820</x>
+                      <y>5781</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>4462</dWidth>
+                    <dWidth>44</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>-179</x>
-                      <y>954</y>
+                      <x>1777</x>
+                      <y>6014</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>4462</dWidth>
+                    <dWidth>44</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>-222</x>
-                      <y>1198</y>
+                      <x>1734</x>
+                      <y>6258</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>4462</dWidth>
+                    <dWidth>44</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>-271</x>
-                      <y>1431</y>
+                      <x>1684</x>
+                      <y>6491</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>4462</dWidth>
+                    <dWidth>44</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>-314</x>
-                      <y>1664</y>
+                      <x>1641</x>
+                      <y>6724</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>4462</dWidth>
+                    <dWidth>44</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>-364</x>
-                      <y>1908</y>
+                      <x>1591</x>
+                      <y>6968</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>4462</dWidth>
+                    <dWidth>44</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>-420</x>
-                      <y>2141</y>
+                      <x>1535</x>
+                      <y>7201</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>4462</dWidth>
+                    <dWidth>44</dWidth>
                   </attributes>
                 </NodeXY>
               </nodes>
             </nodeList>
-            <ConnectsTo>
-              <ConnectingLane>
-                <lane>11</lane>
-                <maneuver>100000000000</maneuver>
-              </ConnectingLane>
-            </ConnectsTo>
+            <connectsTo>
+              <Connection>
+                <connectingLane>
+                  <lane>11</lane>
+                  <maneuver>100000000000</maneuver>
+                </connectingLane>
+              </Connection>
+            </connectsTo>
           </GenericLane>
           <GenericLane>
             <laneID>11</laneID>
@@ -175,121 +177,123 @@
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>-765</x>
-                      <y>2136</y>
+                      <x>1191</x>
+                      <y>7196</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>5350</dWidth>
+                    <dWidth>53</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>-715</x>
-                      <y>1926</y>
+                      <x>1240</x>
+                      <y>6985</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>5350</dWidth>
+                    <dWidth>53</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>-673</x>
-                      <y>1715</y>
+                      <x>1283</x>
+                      <y>6775</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>5350</dWidth>
+                    <dWidth>53</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>-630</x>
-                      <y>1504</y>
+                      <x>1325</x>
+                      <y>6564</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>5350</dWidth>
+                    <dWidth>53</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>-587</x>
-                      <y>1293</y>
+                      <x>1368</x>
+                      <y>6353</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>5350</dWidth>
+                    <dWidth>53</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>-551</x>
-                      <y>1082</y>
+                      <x>1404</x>
+                      <y>6142</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>5350</dWidth>
+                    <dWidth>53</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>-515</x>
-                      <y>871</y>
+                      <x>1440</x>
+                      <y>5931</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>5350</dWidth>
+                    <dWidth>53</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>-472</x>
-                      <y>660</y>
+                      <x>1483</x>
+                      <y>5720</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>5350</dWidth>
+                    <dWidth>53</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>-430</x>
-                      <y>450</y>
+                      <x>1526</x>
+                      <y>5510</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>5350</dWidth>
+                    <dWidth>53</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>-380</x>
-                      <y>239</y>
+                      <x>1575</x>
+                      <y>5299</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>5350</dWidth>
+                    <dWidth>53</dWidth>
                   </attributes>
                 </NodeXY>
               </nodes>
             </nodeList>
-            <ConnectsTo>
-              <ConnectingLane>
-                <lane>12</lane>
-                <maneuver>100000000000</maneuver>
-              </ConnectingLane>
-            </ConnectsTo>
+            <connectsTo>
+              <Connection>
+                <connectingLane>
+                  <lane>12</lane>
+                  <maneuver>100000000000</maneuver>
+                </connectingLane>
+              </Connection>
+            </connectsTo>
           </GenericLane>
           <GenericLane>
             <laneID>12</laneID>
@@ -306,121 +310,123 @@
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>106</x>
-                      <y>-521</y>
+                      <x>2063</x>
+                      <y>4538</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>5910</dWidth>
+                    <dWidth>59</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>173</x>
-                      <y>-1032</y>
+                      <x>2129</x>
+                      <y>4027</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>5910</dWidth>
+                    <dWidth>59</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>246</x>
-                      <y>-1532</y>
+                      <x>2203</x>
+                      <y>3527</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>5910</dWidth>
+                    <dWidth>59</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>333</x>
-                      <y>-2031</y>
+                      <x>2289</x>
+                      <y>3028</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>5910</dWidth>
+                    <dWidth>59</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>419</x>
-                      <y>-2531</y>
+                      <x>2376</x>
+                      <y>2528</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>5910</dWidth>
+                    <dWidth>59</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>499</x>
-                      <y>-3041</y>
+                      <x>2456</x>
+                      <y>2018</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>5910</dWidth>
+                    <dWidth>59</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>559</x>
-                      <y>-3541</y>
+                      <x>2516</x>
+                      <y>1518</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>5910</dWidth>
+                    <dWidth>59</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>593</x>
-                      <y>-4052</y>
+                      <x>2549</x>
+                      <y>1006</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>5910</dWidth>
+                    <dWidth>59</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>600</x>
-                      <y>-4553</y>
+                      <x>2557</x>
+                      <y>506</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>5910</dWidth>
+                    <dWidth>59</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>581</x>
-                      <y>-5065</y>
+                      <x>2537</x>
+                      <y>-5</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>5910</dWidth>
+                    <dWidth>59</dWidth>
                   </attributes>
                 </NodeXY>
               </nodes>
             </nodeList>
-            <ConnectsTo>
-              <ConnectingLane>
-                <lane>13</lane>
-                <maneuver>100000000000</maneuver>
-              </ConnectingLane>
-            </ConnectsTo>
+            <connectsTo>
+              <Connection>
+                <connectingLane>
+                  <lane>13</lane>
+                  <maneuver>100000000000</maneuver>
+                </connectingLane>
+              </Connection>
+            </connectsTo>
           </GenericLane>
           <GenericLane>
             <laneID>13</laneID>
@@ -437,121 +443,123 @@
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>-244</x>
-                      <y>-515</y>
+                      <x>1712</x>
+                      <y>4544</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>5740</dWidth>
+                    <dWidth>57</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>-191</x>
-                      <y>-1015</y>
+                      <x>1765</x>
+                      <y>4044</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>5740</dWidth>
+                    <dWidth>57</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>-130</x>
-                      <y>-1526</y>
+                      <x>1825</x>
+                      <y>3533</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>5740</dWidth>
+                    <dWidth>57</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>-70</x>
-                      <y>-2026</y>
+                      <x>1885</x>
+                      <y>3033</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>5740</dWidth>
+                    <dWidth>57</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>-4</x>
-                      <y>-2536</y>
+                      <x>1952</x>
+                      <y>2522</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>5740</dWidth>
+                    <dWidth>57</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>49</x>
-                      <y>-3036</y>
+                      <x>2005</x>
+                      <y>2022</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>5740</dWidth>
+                    <dWidth>57</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>102</x>
-                      <y>-3536</y>
+                      <x>2059</x>
+                      <y>1522</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>5740</dWidth>
+                    <dWidth>57</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>143</x>
-                      <y>-4048</y>
+                      <x>2099</x>
+                      <y>1011</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>5740</dWidth>
+                    <dWidth>57</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY6>
-                      <x>170</x>
-                      <y>-4559</y>
+                      <x>2126</x>
+                      <y>500</y>
                     </node-XY6>
                   </delta>
                   <attributes>
-                    <dWidth>5740</dWidth>
+                    <dWidth>57</dWidth>
                   </attributes>
                 </NodeXY>
                 <NodeXY>
                   <delta>
                     <node-XY5>
-                      <x>183</x>
-                      <y>-5060</y>
+                      <x>2140</x>
+                      <y>0</y>
                     </node-XY5>
                   </delta>
                   <attributes>
-                    <dWidth>5740</dWidth>
+                    <dWidth>57</dWidth>
                   </attributes>
                 </NodeXY>
               </nodes>
             </nodeList>
-            <ConnectsTo>
-              <ConnectingLane>
-                <lane>10</lane>
-                <maneuver>100000000000</maneuver>
-              </ConnectingLane>
-            </ConnectsTo>
+            <connectsTo>
+              <Connection>
+                <connectingLane>
+                  <lane>10</lane>
+                  <maneuver>100000000000</maneuver>
+                </connectingLane>
+              </Connection>
+            </connectsTo>
           </GenericLane>
         </laneSet>
       </IntersectionGeometry>

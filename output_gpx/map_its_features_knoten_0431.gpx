@@ -1,0 +1,598 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gpx version="1.1" creator="GPX Generator Script">
+  <trk>
+    <name>MAP_ITS_17_1729_2.1 - Lane 10</name>
+    <trkseg>
+      <trkpt lat="53.562942975333705" lon="9.929084756349765">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56298503633662" lon="9.929085678090987">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56302808595253" lon="9.929086621499478">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56307122544206" lon="9.929087566879954">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56311427505732" lon="9.929088510293326">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+      <trkpt lat="53.5631574145462" lon="9.929089455678694">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56320046416083" lon="9.929090399096953">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+      <trkpt lat="53.5632445023884" lon="9.929091364182872">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563287552002365" lon="9.929092307606064">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56333060161601" lon="9.929093251031695">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>MAP_ITS_17_1729_2.1 - Lane 11</name>
+    <trkseg>
+      <trkpt lat="53.56332134460099" lon="9.929093048165434">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56328018233987" lon="9.929092146101294">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56323910995237" lon="9.929091246008948">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56319704895134" lon="9.92909032425366">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563154987949964" lon="9.929089402500704">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+      <trkpt lat="53.5631129269483" lon="9.929088480750073">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56307095582025" lon="9.929087560971317">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56302880494403" lon="9.929086637255798">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56298773255475" lon="9.929085737177042">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56294755890455" lon="9.929084856795809">
+        <desc>Width: 31 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>MAP_ITS_17_1729_2.1 - Lane 12</name>
+    <trkseg>
+      <trkpt lat="53.56294288545977" lon="9.929084754380234">
+        <desc>Width: 37 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56298575532813" lon="9.929085693847266">
+        <desc>Width: 37 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563027816330724" lon="9.929086615590856">
+        <desc>Width: 37 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563070865946315" lon="9.929087559001772">
+        <desc>Width: 37 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56311391556159" lon="9.929088502415127">
+        <desc>Width: 37 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56315597656325" lon="9.92908942416581">
+        <desc>Width: 37 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56319902617788" lon="9.929090367583987">
+        <desc>Width: 37 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56324108717892" lon="9.929091289339382">
+        <desc>Width: 37 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563283238053586" lon="9.929092213066678">
+        <desc>Width: 37 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563325299054" lon="9.929093134826735">
+        <desc>Width: 37 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>MAP_ITS_17_1729_2.1 - Lane 13</name>
+    <trkseg>
+      <trkpt lat="53.563554918983655" lon="9.92809183626877">
+        <desc>Width: 17 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56354592132747" lon="9.928208805451117">
+        <desc>Width: 17 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56353791217053" lon="9.92832579623007">
+        <desc>Width: 17 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56352990289935" lon="9.928442786963469">
+        <desc>Width: 17 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56352288212729" lon="9.928559799304361">
+        <desc>Width: 17 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563516939728196" lon="9.928676835229622">
+        <desc>Width: 17 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563511895954086" lon="9.928793890810255">
+        <desc>Width: 17 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563507923518635" lon="9.928911875761091">
+        <desc>Width: 17 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563504947787656" lon="9.929028825622039">
+        <desc>Width: 17 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56350333931092" lon="9.929097036576188">
+        <desc>Width: 17 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>MAP_ITS_17_1729_2.1 - Lane 14</name>
+    <trkseg>
+      <trkpt lat="53.563435843989545" lon="9.929095557412348">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56343656298099" lon="9.929095573169054">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56343620348526" lon="9.929095565290702">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56343386676306" lon="9.929095514081407">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56343161991481" lon="9.929095464841707">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563429283192605" lon="9.929095413632426">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56342694647042" lon="9.929095362423153">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56342469962217" lon="9.929095313183476">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563423351513194" lon="9.92909528363967">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56342200340424" lon="9.92909525409587">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>MAP_ITS_17_1729_2.1 - Lane 15</name>
+    <trkseg>
+      <trkpt lat="53.56349219494366" lon="9.929096792346325">
+        <desc>Width: 18 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56349282406118" lon="9.92909680613349">
+        <desc>Width: 18 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563492464565456" lon="9.92909679825511">
+        <desc>Width: 18 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563492105069734" lon="9.929096790376729">
+        <desc>Width: 18 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563489768347566" lon="9.929096739167262">
+        <desc>Width: 18 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56348842023862" lon="9.929096709623343">
+        <desc>Width: 18 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56348608351646" lon="9.929096658413888">
+        <desc>Width: 18 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56348374679428" lon="9.92909660720444">
+        <desc>Width: 18 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56348141007211" lon="9.929096555994999">
+        <desc>Width: 18 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563478983476" lon="9.929096502815975">
+        <desc>Width: 18 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>MAP_ITS_17_1729_2.1 - Lane 16</name>
+    <trkseg>
+      <trkpt lat="53.56346801885656" lon="9.929096262525654">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56346568213438" lon="9.929096211316262">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56346433402543" lon="9.929096181772385">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56346397452971" lon="9.929096173894019">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56346370490792" lon="9.929096167985243">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56346334541221" lon="9.929096160106877">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56346100869002" lon="9.929096108897498">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+      <trkpt lat="53.5634576833546" lon="9.929096036022626">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563452380792725" lon="9.929095919816781">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563444112391146" lon="9.929095738614519">
+        <desc>Width: 21 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>MAP_ITS_17_1729_2.1 - Lane 17</name>
+    <trkseg>
+      <trkpt lat="53.563681559310176" lon="9.929100942306592">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563681559310176" lon="9.929100942306592">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563681559310176" lon="9.929100942306592">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563681559310176" lon="9.929100942306592">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563681559310176" lon="9.929100942306592">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563681559310176" lon="9.929100942306592">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563681559310176" lon="9.929100942306592">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563681559310176" lon="9.929100942306592">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56367706561384" lon="9.929100843825735">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56364704772225" lon="9.929100185974294">
+        <desc>Width: 36 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>MAP_ITS_17_1729_2.1 - Lane 18</name>
+    <trkseg>
+      <trkpt lat="53.563681559310176" lon="9.929100942306592">
+        <desc>Width: 157 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563681559310176" lon="9.929100942306592">
+        <desc>Width: 157 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563681559310176" lon="9.929100942306592">
+        <desc>Width: 157 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563681559310176" lon="9.929100942306592">
+        <desc>Width: 157 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563681559310176" lon="9.929100942306592">
+        <desc>Width: 157 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563681559310176" lon="9.929100942306592">
+        <desc>Width: 157 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563681559310176" lon="9.929100942306592">
+        <desc>Width: 157 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563681559310176" lon="9.929100942306592">
+        <desc>Width: 157 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563681559310176" lon="9.929100942306592">
+        <desc>Width: 157 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563681559310176" lon="9.929100942306592">
+        <desc>Width: 157 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>MAP_ITS_17_1729_2.1 - Lane 19</name>
+    <trkseg>
+      <trkpt lat="53.56350192150444" lon="9.928781895291797">
+        <desc>Width: 22 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56349389537815" lon="9.92879681817158">
+        <desc>Width: 22 cm</desc>
+      </trkpt>
+      <trkpt lat="53.5634888933137" lon="9.92881588395014">
+        <desc>Width: 22 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56348488103178" lon="9.928834820422184">
+        <desc>Width: 22 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56348193902815" lon="9.928854837249425">
+        <desc>Width: 22 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56347890714725" lon="9.928874852104723">
+        <desc>Width: 22 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56347686387628" lon="9.928894888617949">
+        <desc>Width: 22 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563474910475904" lon="9.92891492709841">
+        <desc>Width: 22 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56347286837064" lon="9.92893481264636">
+        <desc>Width: 22 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563470906756734" lon="9.928955907852574">
+        <desc>Width: 22 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>MAP_ITS_17_1729_2.1 - Lane 20</name>
+    <trkseg>
+      <trkpt lat="53.563495883285775" lon="9.928343900306588">
+        <desc>Width: 43 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563487904079814" lon="9.928352784809789">
+        <desc>Width: 43 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56347786748867" lon="9.928348790356491">
+        <desc>Width: 43 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56347093396338" lon="9.928361925390291">
+        <desc>Width: 43 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563467933800204" lon="9.928377864319406">
+        <desc>Width: 43 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56346492543302" lon="9.92839485997582">
+        <desc>Width: 43 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56346290567684" lon="9.928411877279345">
+        <desc>Width: 43 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563461874531676" lon="9.928428916231168">
+        <desc>Width: 43 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56345994581638" lon="9.928445784538653">
+        <desc>Width: 43 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563457917850485" lon="9.92846385856705">
+        <desc>Width: 43 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>MAP_ITS_17_1729_2.1 - Lane 21</name>
+    <trkseg>
+      <trkpt lat="53.56352893800314" lon="9.928902824006808">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56352489759707" lon="9.928855929433105">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56351888111818" lon="9.928808840588866">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563503917111824" lon="9.92882587627744">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563496907725" lon="9.92887192477751">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563490879899604" lon="9.928918900692157">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56348593054302" lon="9.92896590022504">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563479902680825" lon="9.929012876113738">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56347387480022" lon="9.929059851988868">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56346801885656" lon="9.929096262525654">
+        <desc>Width: 29 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>MAP_ITS_17_1729_2.1 - Lane 22</name>
+    <trkseg>
+      <trkpt lat="53.56352994341778" lon="9.928784924983237">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56351293302724" lon="9.92881082409707">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56350689272216" lon="9.9288478346105">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56350291247228" lon="9.928885796172516">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56349991965127" lon="9.928923930350248">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56349791777623" lon="9.928961784261942">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.5634959065095" lon="9.929000845861538">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56349390343763" lon="9.929038850727169">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56349189214577" lon="9.92907791231911">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56349003796935" lon="9.929096745076048">
+        <desc>Width: 24 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>MAP_ITS_17_1729_2.1 - Lane 23</name>
+    <trkseg>
+      <trkpt lat="53.56354153573079" lon="9.929097873655582">
+        <desc>Width: 33 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56354987807064" lon="9.929053817189429">
+        <desc>Width: 33 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563556922773586" lon="9.928933785628232">
+        <desc>Width: 33 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56356189908347" lon="9.92881385970041">
+        <desc>Width: 33 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563565886659916" lon="9.928693912086795">
+        <desc>Width: 33 cm</desc>
+      </trkpt>
+      <trkpt lat="53.5635688937063" lon="9.92857288606365">
+        <desc>Width: 33 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56357189242787" lon="9.928452916754102">
+        <desc>Width: 33 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56357686942766" lon="9.928332839759976">
+        <desc>Width: 33 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563583913407896" lon="9.928212807993962">
+        <desc>Width: 33 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56359194588134" lon="9.928092797828848">
+        <desc>Width: 33 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>MAP_ITS_17_1729_2.1 - Lane 24</name>
+    <trkseg>
+      <trkpt lat="53.56348292483089" lon="9.928148843207023">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56348287970294" lon="9.928258911806047">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56347995147734" lon="9.928369823194512">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56347486500246" lon="9.928480838288918">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56346888671693" lon="9.928590927901988">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563460932275596" lon="9.928700823208885">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+      <trkpt lat="53.5634538753006" lon="9.92881088912452">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56344788967752" lon="9.928921884400653">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+      <trkpt lat="53.5634438893856" lon="9.929031866243395">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563442314912535" lon="9.929095699222737">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>MAP_ITS_17_1729_2.1 - Lane 25</name>
+    <trkseg>
+      <trkpt lat="53.56347393827284" lon="9.928773883878927">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56346789442244" lon="9.928741893207844">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56345692473208" lon="9.928753882845438">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56345191994588" lon="9.92878487652459">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56344690694606" lon="9.92881692692533">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563442883723276" lon="9.928848848016857">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+      <trkpt lat="53.5634399389792" lon="9.928880792731825">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563435906360574" lon="9.928913921501785">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56343188311196" lon="9.928945842575525">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56342794855634" lon="9.928977916573658">
+        <desc>Width: 28 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <name>MAP_ITS_17_1729_2.1 - Lane 26</name>
+    <trkseg>
+      <trkpt lat="53.563557904774385" lon="9.92881890576156">
+        <desc>Width: 120 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56354787913663" lon="9.92880192652081">
+        <desc>Width: 120 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56353988895885" lon="9.928823795616214">
+        <desc>Width: 120 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56353492283957" lon="9.928849807614716">
+        <desc>Width: 120 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56353095353407" lon="9.92887478453641">
+        <desc>Width: 120 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563526886143094" lon="9.928900816215156">
+        <desc>Width: 120 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56352290862038" lon="9.928926849858081">
+        <desc>Width: 120 cm</desc>
+      </trkpt>
+      <trkpt lat="53.563517942478754" lon="9.92895286183385">
+        <desc>Width: 120 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56351289466462" lon="9.928977815103519">
+        <desc>Width: 120 cm</desc>
+      </trkpt>
+      <trkpt lat="53.56350489507515" lon="9.929000891839294">
+        <desc>Width: 120 cm</desc>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>
